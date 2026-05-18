@@ -208,17 +208,17 @@ function Hero() {
             KI-Workflows, Notizen und Vorlagen strukturiert sammelst, lokal
             speicherst und schnell wiederfindest.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a className="button button-dark min-w-[190px]" href={purchaseUrl}>
+          <div className="mt-9 grid w-full max-w-[430px] grid-cols-1 gap-3 sm:grid-cols-2">
+            <a className="button button-dark w-full" href={purchaseUrl}>
               Jetzt kaufen
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a className="button button-light" href="#features">
+            <a className="button button-light w-full" href="#features">
               Funktionen ansehen
               <Play className="h-4 w-4" />
             </a>
           </div>
-          <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-graphite/70 sm:grid-cols-3">
+          <div className="mt-8 grid w-full max-w-[430px] grid-cols-1 gap-3 text-sm text-graphite/70 sm:grid-cols-3">
             <TrustItem>Lokal gespeichert</TrustItem>
             <TrustItem>Keine Cloud</TrustItem>
             <TrustItem>Export möglich</TrustItem>
