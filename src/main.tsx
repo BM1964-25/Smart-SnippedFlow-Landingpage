@@ -431,6 +431,16 @@ function License() {
             Für Anwender, die Prompts, Code-Snippets, Workflows und Vorlagen
             täglich als produktive Arbeitsbausteine nutzen.
           </p>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">
+            Die Lizenz ist bewusst einfach gehalten: einmal aktivieren, lokal
+            arbeiten und die eigene Wissensbasis über das Jahr hinweg
+            strukturiert ausbauen.
+          </p>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-white/56">
+            Ideal, wenn du regelmäßig mit KI, Code und wiederkehrenden Aufgaben
+            arbeitest und deine besten Bausteine nicht immer neu suchen oder
+            neu schreiben möchtest.
+          </p>
         </div>
         <div className="rounded-2xl border-2 border-white bg-white/[0.12] p-6 shadow-glow sm:p-8">
           <div className="flex items-start justify-between gap-6">
@@ -442,7 +452,7 @@ function License() {
               </div>
               <p className="mt-2 text-white/64">zzgl. 19% MwSt. · entspricht 8,25 € pro Monat</p>
             </div>
-            <BadgeCheck className="h-7 w-7 text-[#9bc3ad]" />
+            <BadgeCheck className="h-14 w-14 shrink-0 text-[#9bc3ad]" />
           </div>
           <ul className="mt-7 space-y-4 text-white/80">
             {[
