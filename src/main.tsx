@@ -185,9 +185,13 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-ink/10">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[0.72fr_1.28fr] lg:px-8 lg:pb-24 lg:pt-24">
         <div>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white/50 px-3 py-1 text-sm text-graphite/80 shadow-sm">
-            <Sparkles className="h-4 w-4 text-blue" />
-            Lokale Wissensbasis für Prompts, Code, Workflows und Notizen
+          <p className="mb-5 inline-flex max-w-[360px] items-start gap-3 rounded-2xl border border-ink/10 bg-white/70 px-4 py-3 text-sm leading-5 text-graphite/80 shadow-sm backdrop-blur">
+            <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-blue" />
+            <span>
+              Lokale Wissensbasis für
+              <br />
+              Prompts, Code, Workflows und Notizen
+            </span>
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-[1.03] tracking-normal text-ink sm:text-6xl lg:text-7xl">
             SMART SnippetFlow
