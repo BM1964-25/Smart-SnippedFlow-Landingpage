@@ -29,6 +29,7 @@ import {
 import "./styles.css";
 
 const purchaseUrl = "https://buy.stripe.com/smart-snippetflow";
+const logoUrl = `${import.meta.env.BASE_URL}app-logo.png`;
 
 const features = [
   {
@@ -161,7 +162,7 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
         <a href="#top" className="flex items-center gap-3 font-semibold tracking-normal">
-          <img src="/app-logo.png" alt="" className="h-9 w-9 rounded-lg shadow-sm" />
+          <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
           <span>SMART SnippetFlow</span>
         </a>
         <nav className="hidden items-center gap-7 text-sm text-graphite/70 md:flex">
@@ -242,7 +243,7 @@ function AppMockup() {
         <div className="grid min-h-[480px] grid-cols-[150px_1fr] bg-[#f7f4ef] sm:grid-cols-[210px_1fr]">
           <aside className="border-r border-ink/10 bg-[#ece7dc] p-4">
             <div className="mb-5 flex items-center gap-3">
-              <img src="/app-logo.png" alt="" className="h-8 w-8 rounded-lg shadow-sm" />
+              <img src={logoUrl} alt="" className="h-8 w-8 rounded-lg shadow-sm" />
               <div className="min-w-0">
                 <div className="truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-graphite/60">
                   SMART
@@ -506,7 +507,7 @@ function Footer() {
     <footer className="border-t border-ink/10 bg-paper">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div className="flex items-center gap-3">
-          <img src="/app-logo.png" alt="" className="h-9 w-9 rounded-lg" />
+          <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg" />
           <div>
             <div className="font-semibold">SMART SnippetFlow</div>
             <div className="text-sm text-graphite/60">Lokale Wissensbasis für Prompts, Code und Workflows.</div>
