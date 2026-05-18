@@ -202,7 +202,7 @@ function Hero() {
             speicherst und schnell wiederfindest.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a className="button button-dark" href={purchaseUrl}>
+            <a className="button button-dark min-w-[190px]" href={purchaseUrl}>
               Jetzt kaufen
               <ArrowRight className="h-4 w-4" />
             </a>
