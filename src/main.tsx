@@ -114,9 +114,9 @@ const faqs = [
       "Nein. Es gibt keine Cloud-Synchronisierung und keine Team-Cloud. Deine Inhalte bleiben lokal.",
   },
   {
-    question: "Gibt es eine Windows-Version?",
+    question: "Gibt es eine Windows- und macOS-Version?",
     answer:
-      "Eine Windows-Version ist vorgesehen. Die Landingpage kann später je nach Release-Status Download- oder Wartelisten-Links ausspielen.",
+      "Ja. SMART SnippetFlow ist für Windows und macOS vorgesehen, damit du die App auf beiden Desktop-Plattformen nutzen kannst.",
   },
   {
     question: "Wie funktioniert die Lizenz?",
