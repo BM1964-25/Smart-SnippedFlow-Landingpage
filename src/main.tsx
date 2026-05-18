@@ -64,22 +64,22 @@ const features = [
   {
     icon: Database,
     title: "Lokale Speicherung",
-    text: "Deine Bibliothek bleibt als SQLite-Datenbank lokal auf deinem Rechner.",
+    text: "Deine Inhalte bleiben auf deinem Rechner und werden nicht automatisch in eine Cloud übertragen.",
   },
   {
     icon: FileJson,
-    title: "JSON Export/Import",
-    text: "Sichere, migriere und archiviere deine Inhalte über ein transparentes JSON-Format.",
+    title: "Export und Import",
+    text: "Sichere deine Bibliothek und nimm deine Inhalte mit, wenn du sie später wiederherstellen möchtest.",
   },
   {
     icon: BrainCircuit,
-    title: "KI-Metadaten",
-    text: "Lass Titel, Kurzbeschreibungen und Metadaten für neue Einträge vorbereiten.",
+    title: "KI-Vorschläge",
+    text: "Lass passende Titel, Kurzbeschreibungen und ergänzende Hinweise für neue Einträge vorbereiten.",
   },
   {
     icon: Braces,
-    title: "Live-Preview",
-    text: "Prüfe HTML, CSS, JavaScript und Markdown direkt in der Vorschau.",
+    title: "Direkte Vorschau",
+    text: "Prüfe Inhalte wie HTML, CSS, JavaScript und Markdown direkt beim Arbeiten.",
   },
   {
     icon: Search,
@@ -111,7 +111,7 @@ const faqs = [
   {
     question: "Werden Daten in der Cloud gespeichert?",
     answer:
-      "Nein. Es gibt keine Cloud-Synchronisierung und keine Team-Cloud. Deine Inhalte bleiben lokal.",
+      "Nein. Deine Inhalte bleiben lokal auf deinem Rechner. Es gibt in der Einzelplatzversion keine automatische Cloud-Ablage.",
   },
   {
     question: "Gibt es eine Windows- und macOS-Version?",
@@ -121,22 +121,22 @@ const faqs = [
   {
     question: "Wie funktioniert die Lizenz?",
     answer:
-      "Die App wird über eine kostenpflichtige Jahreslizenz mit 12 Monaten Laufzeit verkauft. Die Verlängerung erfolgt automatisch um weitere 12 Monate, sofern nicht spätestens 1 Monat vor Ablauf gekündigt wird.",
+      "Du erhältst eine Jahreslizenz für 12 Monate. Sie verlängert sich automatisch um weitere 12 Monate, wenn sie nicht spätestens 1 Monat vor Ablauf gekündigt wird.",
   },
   {
     question: "Kann ich Daten exportieren?",
     answer:
-      "Ja. Ein JSON Export/Import ist vorgesehen, damit deine Bibliothek portabel und sicherbar bleibt.",
+      "Ja. Du kannst deine Bibliothek exportieren und später wieder importieren.",
   },
   {
     question: "Gibt es KI-Funktionen?",
     answer:
-      "Ja. Die App unterstützt KI-gestützte Vorschläge für Titel und Metadaten, bleibt aber als Bibliothek bewusst schlank.",
+      "Ja. Die App kann dich bei Titeln, Kurzbeschreibungen und ergänzenden Hinweisen unterstützen, bleibt aber bewusst schlank.",
   },
   {
     question: "Brauche ich ein Nutzerkonto?",
     answer:
-      "Für die lokale Nutzung ist kein klassisches Cloud-Nutzerkonto nötig. Zahlung und Lizenzverwaltung erfolgen über Stripe.",
+      "Für die lokale Nutzung ist kein klassisches Online-Konto nötig. Kauf und Lizenzaktivierung laufen über einen sicheren Online-Prozess.",
   },
 ];
 
@@ -207,9 +207,9 @@ function Hero() {
             </a>
           </div>
           <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-graphite/70 sm:grid-cols-3">
-            <TrustItem>SQLite lokal</TrustItem>
+            <TrustItem>Lokal gespeichert</TrustItem>
             <TrustItem>Keine Cloud</TrustItem>
-            <TrustItem>JSON Export</TrustItem>
+            <TrustItem>Export möglich</TrustItem>
           </div>
         </div>
         <AppMockup />
@@ -281,13 +281,13 @@ function AppMockup() {
           <section className="p-4 sm:p-6">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <div className="text-xs uppercase text-graphite/45">Prompt Bibliothek</div>
-                <h2 className="mt-1 text-2xl font-semibold">Reusable Launch Prompts</h2>
+                <div className="text-xs uppercase text-graphite/45">Bibliothek</div>
+                <h2 className="mt-1 text-2xl font-semibold">Wiederverwendbare Bausteine</h2>
               </div>
               <div className="rounded-full bg-sage/10 px-3 py-1 text-sm text-sage">Favorit</div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              {["Landingpage Copy", "React Component", "FAQ Rewrite", "SQLite Query"].map((title, index) => (
+              {["Landingpage Copy", "React Component", "FAQ Rewrite", "Abfrage Beispiel"].map((title, index) => (
                 <article className="rounded-xl border border-ink/10 bg-white p-4 shadow-sm" key={title}>
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-sm font-medium">{title}</span>
@@ -305,8 +305,8 @@ function AppMockup() {
             </div>
             <div className="mt-5 rounded-xl border border-ink/10 bg-[#20231f] p-4 text-sm text-white shadow-glow">
               <div className="mb-3 flex items-center justify-between text-white/60">
-                <span>Live Preview</span>
-                <span>Markdown</span>
+                <span>Vorschau</span>
+                <span>Notiz</span>
               </div>
               <div className="rounded-lg bg-white/10 p-4 leading-7 text-white/80">
                 # Kampagnenstruktur<br />
@@ -380,14 +380,15 @@ function LocalStorage() {
           <p className="eyebrow">Lokale Datenspeicherung</p>
           <h2 className="section-title">Deine Bibliothek bleibt auf deinem Rechner.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-graphite/75">
-            SMART SnippetFlow setzt auf lokale SQLite-Speicherung. Es gibt keine
-            Cloud-Synchronisierung, keine Teamverwaltung und kein komplexes
-            Cloud-System im Hintergrund.
+            SMART SnippetFlow speichert deine Bibliothek lokal auf deinem
+            Rechner. Es gibt keine automatische Cloud-Ablage, keine
+            Teamverwaltung und kein unnötig komplexes Online-System im
+            Hintergrund.
           </p>
         </div>
         <div className="grid gap-4">
           {[
-            ["SQLite lokal", "Strukturierte Datenbank direkt auf dem Desktop."],
+            ["Lokal gespeichert", "Deine Bibliothek bleibt direkt auf deinem Rechner."],
             ["Keine Cloud", "Keine automatische Übertragung deiner Inhalte."],
             ["Bewusst schlank", "Ein Werkzeug für Einzelpersonen und private Anwender."],
           ].map(([title, text]) => (
@@ -433,11 +434,11 @@ function License() {
             {[
               "12 Monate Nutzung für professionelle Einzelanwender",
               "Lokale Wissensbasis für Prompts, Code, Workflows und Notizen",
-              "KI-Unterstützung für Titel, Beschreibungen und Metadaten",
-              "JSON Export/Import und lokale SQLite-Speicherung",
+              "KI-Unterstützung für Titel, Beschreibungen und Hinweise",
+              "Export und Import deiner Bibliothek",
               "Automatische Verlängerung um weitere 12 Monate",
               "Kündigungsfrist: 1 Monat vor Ablauf",
-              "Zahlung und Lizenzverwaltung über Stripe",
+              "Sichere Online-Zahlung",
             ].map((item) => (
               <li className="flex gap-3" key={item}>
                 <Check className="mt-1 h-4 w-4 shrink-0 text-[#9bc3ad]" />
