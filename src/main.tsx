@@ -335,6 +335,8 @@ function Problem() {
             Wer regelmäßig mit KI, Code und wiederkehrenden Arbeitsabläufen
             arbeitet, produziert wertvolle kleine Bausteine. Ohne Struktur
             verschwinden sie in Chats, Notizen, Dateien oder Browser-Tabs.
+            Dabei sind Prompts, Code, Workflows und Notizen echtes
+            Arbeitskapital.
           </p>
           <p>
             SMART SnippetFlow bringt diese Bausteine an einen ruhigen Ort:
