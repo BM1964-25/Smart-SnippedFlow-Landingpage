@@ -442,7 +442,7 @@ function License() {
             neu schreiben möchtest.
           </p>
         </div>
-        <div className="rounded-2xl border-2 border-white bg-white/[0.12] p-6 shadow-glow sm:p-8">
+        <div className="rounded-2xl border border-white bg-white/[0.12] p-6 shadow-glow sm:p-8">
           <div className="flex items-start justify-between gap-6">
             <div>
               <h3 className="text-2xl font-semibold">Professional Jahreslizenz</h3>
