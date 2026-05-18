@@ -31,6 +31,13 @@ import "./styles.css";
 const purchaseUrl = "https://buy.stripe.com/smart-snippetflow";
 const logoUrl = `${import.meta.env.BASE_URL}app-logo.png`;
 
+const legalLinks = [
+  { label: "Impressum", href: "https://www.built-smart-hub.com/impressum" },
+  { label: "Datenschutz", href: "https://www.built-smart-hub.com/datenschutz" },
+  { label: "AGB", href: "https://www.built-smart-hub.com/agb" },
+  { label: "Widerrufsbelehrung", href: "https://www.built-smart-hub.com/widerrufbelehrung" },
+];
+
 const features = [
   {
     icon: Library,
@@ -518,10 +525,11 @@ function Footer() {
           </div>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-graphite/68">
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
-          <a href="/agb">AGB</a>
-          <a href="/widerruf">Widerrufsbelehrung</a>
+          {legalLinks.map((link) => (
+            <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
+              {link.label}
+            </a>
+          ))}
         </nav>
       </div>
     </footer>
