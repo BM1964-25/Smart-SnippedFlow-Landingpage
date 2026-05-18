@@ -411,23 +411,30 @@ function License() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
         <div>
           <p className="eyebrow text-white/55">Lizenzmodell</p>
-          <h2 className="section-title text-white">Eine klare Jahreslizenz.</h2>
+          <h2 className="section-title text-white">Eine professionelle Jahreslizenz.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-            Die Zahlungsabwicklung wird über Lemon Squeezy vorbereitet. Der
-            Kauf-Button kann später direkt auf den Live-Checkout zeigen.
+            Für Anwender, die Prompts, Code-Snippets, Workflows und Vorlagen
+            täglich als produktive Arbeitsbausteine nutzen.
           </p>
         </div>
         <div className="rounded-2xl border border-white/20 bg-white/[0.12] p-6 shadow-glow sm:p-8">
           <div className="flex items-start justify-between gap-6">
             <div>
-              <h3 className="text-2xl font-semibold">Jahreslizenz</h3>
-              <p className="mt-2 text-white/60">12 Monate Nutzung mit automatischer Verlängerung.</p>
+              <h3 className="text-2xl font-semibold">Professional Jahreslizenz</h3>
+              <div className="mt-4 flex flex-wrap items-end gap-x-3 gap-y-1">
+                <span className="text-5xl font-semibold tracking-normal">99 €</span>
+                <span className="pb-1 text-white/64">pro Jahr</span>
+              </div>
+              <p className="mt-2 text-white/64">zzgl. 19% MwSt. · entspricht 8,25 € pro Monat</p>
             </div>
             <BadgeCheck className="h-7 w-7 text-[#9bc3ad]" />
           </div>
           <ul className="mt-7 space-y-4 text-white/80">
             {[
-              "Kostenpflichtige Lizenz für 12 Monate",
+              "12 Monate Nutzung für professionelle Einzelanwender",
+              "Lokale Wissensbasis für Prompts, Code, Workflows und Notizen",
+              "KI-Unterstützung für Titel, Beschreibungen und Metadaten",
+              "JSON Export/Import und lokale SQLite-Speicherung",
               "Automatische Verlängerung um weitere 12 Monate",
               "Kündigungsfrist: 1 Monat vor Ablauf",
               "Zahlungsabwicklung über Lemon Squeezy",
