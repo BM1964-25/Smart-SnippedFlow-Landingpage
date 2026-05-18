@@ -38,6 +38,6 @@ git push -u origin main
 
 ## Vor Livegang anpassen
 
-- Lemon-Squeezy-Checkout-Link in `src/main.tsx` ersetzen.
+- Stripe-Checkout-Link in `src/main.tsx` ersetzen.
 - Rechtliche Seiten oder externe Links für Impressum, Datenschutz, AGB und Widerruf ergänzen.
 - Optional echte App-Screenshots im Hero oder Funktionsbereich einbinden.

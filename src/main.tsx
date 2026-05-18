@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
-const purchaseUrl = "https://example.lemonsqueezy.com/checkout/buy/smart-snippetflow";
+const purchaseUrl = "https://buy.stripe.com/smart-snippetflow";
 
 const features = [
   {
@@ -116,7 +116,7 @@ const faqs = [
   {
     question: "Gibt es eine Windows- und macOS-Version?",
     answer:
-      "Ja. SMART SnippetFlow ist für Windows und macOS vorgesehen, damit du die App auf beiden Desktop-Plattformen nutzen kannst.",
+      "Ja. SMART SnippetFlow ist für Windows und macOS vorgesehen. Die Lizenz ist als Einzelplatzversion gedacht und wird je Installation bzw. Arbeitsplatz genutzt.",
   },
   {
     question: "Wie funktioniert die Lizenz?",
@@ -136,7 +136,7 @@ const faqs = [
   {
     question: "Brauche ich ein Nutzerkonto?",
     answer:
-      "Für die lokale Nutzung ist kein klassisches Cloud-Nutzerkonto nötig. Die Zahlung und Lizenzverwaltung laufen über Lemon Squeezy.",
+      "Für die lokale Nutzung ist kein klassisches Cloud-Nutzerkonto nötig. Zahlung und Lizenzverwaltung erfolgen über Stripe.",
   },
 ];
 
@@ -437,7 +437,7 @@ function License() {
               "JSON Export/Import und lokale SQLite-Speicherung",
               "Automatische Verlängerung um weitere 12 Monate",
               "Kündigungsfrist: 1 Monat vor Ablauf",
-              "Zahlungsabwicklung über Lemon Squeezy",
+              "Zahlung und Lizenzverwaltung über Stripe",
             ].map((item) => (
               <li className="flex gap-3" key={item}>
                 <Check className="mt-1 h-4 w-4 shrink-0 text-[#9bc3ad]" />
