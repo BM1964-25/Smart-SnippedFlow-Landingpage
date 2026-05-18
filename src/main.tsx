@@ -417,7 +417,7 @@ function License() {
             Kauf-Button kann später direkt auf den Live-Checkout zeigen.
           </p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-glow sm:p-8">
+        <div className="rounded-2xl border border-white/20 bg-white/[0.12] p-6 shadow-glow sm:p-8">
           <div className="flex items-start justify-between gap-6">
             <div>
               <h3 className="text-2xl font-semibold">Jahreslizenz</h3>
