@@ -81,6 +81,16 @@ const features = [
     title: "Live-Preview",
     text: "Prüfe HTML, CSS, JavaScript und Markdown direkt in der Vorschau.",
   },
+  {
+    icon: Search,
+    title: "Schnelle Suche",
+    text: "Finde Einträge über Suchbegriffe, Typen, Kategorien und Tags ohne Umwege wieder.",
+  },
+  {
+    icon: Star,
+    title: "Klare Bibliotheksansicht",
+    text: "Behalte Prompts, Code, Workflows und Notizen in einer ruhigen Oberfläche im Blick.",
+  },
 ];
 
 const audiences = [
