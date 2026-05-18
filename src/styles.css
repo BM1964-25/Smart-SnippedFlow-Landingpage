@@ -30,7 +30,7 @@ body {
   }
 
   .button-light {
-    @apply border border-ink/10 bg-white/60 text-ink hover:bg-white;
+    @apply border border-ink bg-white/60 text-ink hover:bg-white;
   }
 
   .section {
