@@ -1,6 +1,6 @@
 # SMART SnippetFlow Landingpage
 
-Eigenstaendiges Webprojekt fuer die Landingpage der Desktop-App SMART SnippetFlow.
+Eigenständiges Webprojekt für die Landingpage der Desktop-App SMART SnippetFlow.
 
 ## Stack
 
@@ -8,7 +8,7 @@ Eigenstaendiges Webprojekt fuer die Landingpage der Desktop-App SMART SnippetFlo
 - Vite
 - TypeScript
 - Tailwind CSS
-- lucide-react fuer Icons
+- lucide-react für Icons
 
 ## Lokaler Start
 
@@ -17,7 +17,7 @@ npm install
 npm run dev
 ```
 
-Der lokale Server startet standardmaessig auf `http://127.0.0.1:5173`.
+Der lokale Server startet standardmäßig auf `http://127.0.0.1:5173`.
 
 ## Build
 
@@ -39,5 +39,5 @@ git push -u origin main
 ## Vor Livegang anpassen
 
 - Lemon-Squeezy-Checkout-Link in `src/main.tsx` ersetzen.
-- Rechtliche Seiten oder externe Links fuer Impressum, Datenschutz, AGB und Widerruf ergaenzen.
+- Rechtliche Seiten oder externe Links für Impressum, Datenschutz, AGB und Widerruf ergänzen.
 - Optional echte App-Screenshots im Hero oder Funktionsbereich einbinden.

@@ -9,15 +9,20 @@ import {
   Code2,
   Database,
   FileJson,
-  FolderTree,
   Heart,
+  HelpCircle,
   Library,
   Lock,
   NotebookText,
+  PanelLeftClose,
   Play,
+  Plus,
   Search,
+  Settings,
   Sparkles,
+  Star,
   Tags,
+  Trash2,
   Users,
   Workflow,
 } from "lucide-react";
@@ -83,8 +88,8 @@ const audiences = [
   "KI-Nutzer",
   "Content-Ersteller",
   "Selbstständige",
-  "kleine Teams ohne Cloud-Zwang",
-  "Menschen mit wiederverwendbaren Prompts und Snippets",
+  "private Anwender",
+  "Menschen mit wiederverwendbaren Prompts, Snippets und Workflows",
 ];
 
 const faqs = [
@@ -167,11 +172,11 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden border-b border-ink/10">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[0.92fr_1.08fr] lg:px-8 lg:pb-24 lg:pt-24">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[0.72fr_1.28fr] lg:px-8 lg:pb-24 lg:pt-24">
         <div>
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-white/50 px-3 py-1 text-sm text-graphite/80 shadow-sm">
             <Sparkles className="h-4 w-4 text-blue" />
-            Lokale Bibliothek fuer Prompts, Snippets und Workflows
+            Lokale Wissensbasis für Prompts, Code, Workflows und Notizen
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-[1.03] tracking-normal text-ink sm:text-6xl lg:text-7xl">
             SMART SnippetFlow
@@ -193,7 +198,7 @@ function Hero() {
           </div>
           <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-sm text-graphite/70 sm:grid-cols-3">
             <TrustItem>SQLite lokal</TrustItem>
-            <TrustItem>Kein SaaS-Zwang</TrustItem>
+            <TrustItem>Keine Cloud</TrustItem>
             <TrustItem>JSON Export</TrustItem>
           </div>
         </div>
@@ -226,20 +231,42 @@ function AppMockup() {
         </div>
         <div className="grid min-h-[480px] grid-cols-[150px_1fr] bg-[#f7f4ef] sm:grid-cols-[210px_1fr]">
           <aside className="border-r border-ink/10 bg-[#ece7dc] p-4">
-            <div className="mb-5 flex items-center gap-2 rounded-lg bg-white/70 px-3 py-2 text-sm text-graphite">
-              <Search className="h-4 w-4" />
-              Suche
-            </div>
-            {["Alle Eintraege", "Prompts", "Code", "Workflows", "Favoriten"].map((item, index) => (
-              <div
-                className={`mb-2 rounded-lg px-3 py-2 text-sm ${
-                  index === 1 ? "bg-ink text-white" : "text-graphite/70"
-                }`}
-                key={item}
-              >
-                {item}
+            <div className="mb-5 flex items-center gap-3">
+              <img src="/app-logo.png" alt="" className="h-8 w-8 rounded-lg shadow-sm" />
+              <div className="min-w-0">
+                <div className="truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-graphite/60">
+                  SMART
+                </div>
+                <div className="truncate text-sm font-semibold text-ink">SnippetFlow</div>
+                <div className="truncate text-xs text-graphite/60">Lokale Wissensbasis</div>
               </div>
-            ))}
+            </div>
+            <div className="space-y-1">
+              {[
+                ["Bibliothek", Library],
+                ["Prompts", NotebookText],
+                ["Code", Code2],
+                ["Workflows", Workflow],
+                ["Notizen", NotebookText],
+                ["Favoriten", Star],
+                ["Einstellungen", Settings],
+                ["Hilfe", HelpCircle],
+              ].map(([item, Icon], index) => {
+                const MenuIcon = Icon as typeof Library;
+
+                return (
+                  <div
+                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm ${
+                      index === 0 ? "bg-white/72 text-ink shadow-sm" : "text-graphite/70"
+                    }`}
+                    key={item as string}
+                  >
+                    <MenuIcon className="h-4 w-4 shrink-0" />
+                    <span className="truncate">{item as string}</span>
+                  </div>
+                );
+              })}
+            </div>
           </aside>
           <section className="p-4 sm:p-6">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
@@ -291,18 +318,18 @@ function Problem() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="eyebrow">Problem und Nutzen</p>
-          <h2 className="section-title">Gute Prompts und Snippets sind Arbeitskapital.</h2>
+          <h2 className="section-title">Prompts, Code, Workflows und Notizen sind Arbeitskapital.</h2>
         </div>
         <div className="grid gap-4 text-lg leading-8 text-graphite/75">
           <p>
-            Wer regelmaessig mit KI, Code und wiederkehrenden Arbeitsablaeufen
+            Wer regelmäßig mit KI, Code und wiederkehrenden Arbeitsabläufen
             arbeitet, produziert wertvolle kleine Bausteine. Ohne Struktur
             verschwinden sie in Chats, Notizen, Dateien oder Browser-Tabs.
           </p>
           <p>
             SMART SnippetFlow bringt diese Bausteine an einen ruhigen Ort:
-            auffindbar, kategorisiert, lokal gespeichert und bereit fuer den
-            naechsten Einsatz.
+            auffindbar, kategorisiert, lokal gespeichert und bereit für den
+            nächsten Einsatz.
           </p>
         </div>
       </div>
@@ -316,7 +343,7 @@ function FeatureGrid() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="eyebrow">Funktionen</p>
-          <h2 className="section-title">Alles, was eine fokussierte Prompt- und Snippet-Bibliothek braucht.</h2>
+          <h2 className="section-title">Alles, was eine fokussierte Wissensbasis für wiederverwendbare Bausteine braucht.</h2>
         </div>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => {
@@ -345,14 +372,14 @@ function LocalStorage() {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-graphite/75">
             SMART SnippetFlow setzt auf lokale SQLite-Speicherung. Es gibt keine
             Cloud-Synchronisierung, keine Teamverwaltung und kein komplexes
-            SaaS-System im Hintergrund.
+            Cloud-System im Hintergrund.
           </p>
         </div>
         <div className="grid gap-4">
           {[
             ["SQLite lokal", "Strukturierte Datenbank direkt auf dem Desktop."],
-            ["Keine Cloud", "Keine automatische Uebertragung deiner Inhalte."],
-            ["Bewusst schlank", "Ein Werkzeug fuer Einzelpersonen und kleine Setups."],
+            ["Keine Cloud", "Keine automatische Übertragung deiner Inhalte."],
+            ["Bewusst schlank", "Ein Werkzeug für Einzelpersonen und private Anwender."],
           ].map(([title, text]) => (
             <div className="rounded-xl border border-ink/10 bg-white/60 p-5 shadow-sm" key={title}>
               <div className="flex items-center gap-3">
@@ -376,24 +403,24 @@ function License() {
           <p className="eyebrow text-white/55">Lizenzmodell</p>
           <h2 className="section-title text-white">Eine klare Jahreslizenz.</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-            Die Zahlungsabwicklung wird ueber Lemon Squeezy vorbereitet. Der
-            Kauf-Button kann spaeter direkt auf den Live-Checkout zeigen.
+            Die Zahlungsabwicklung wird über Lemon Squeezy vorbereitet. Der
+            Kauf-Button kann später direkt auf den Live-Checkout zeigen.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-glow sm:p-8">
           <div className="flex items-start justify-between gap-6">
             <div>
               <h3 className="text-2xl font-semibold">Jahreslizenz</h3>
-              <p className="mt-2 text-white/60">12 Monate Nutzung mit automatischer Verlangerung.</p>
+              <p className="mt-2 text-white/60">12 Monate Nutzung mit automatischer Verlängerung.</p>
             </div>
             <BadgeCheck className="h-7 w-7 text-[#9bc3ad]" />
           </div>
           <ul className="mt-7 space-y-4 text-white/80">
             {[
-              "Kostenpflichtige Lizenz fuer 12 Monate",
-              "Automatische Verlangerung um weitere 12 Monate",
-              "Kuendigungsfrist: 1 Monat vor Ablauf",
-              "Zahlungsabwicklung ueber Lemon Squeezy",
+              "Kostenpflichtige Lizenz für 12 Monate",
+              "Automatische Verlängerung um weitere 12 Monate",
+              "Kündigungsfrist: 1 Monat vor Ablauf",
+              "Zahlungsabwicklung über Lemon Squeezy",
             ].map((item) => (
               <li className="flex gap-3" key={item}>
                 <Check className="mt-1 h-4 w-4 shrink-0 text-[#9bc3ad]" />
@@ -415,8 +442,8 @@ function Audience() {
   return (
     <section className="section">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <p className="eyebrow">Fuer wen?</p>
-        <h2 className="section-title max-w-4xl">Gebaut fuer Menschen, die ihre besten Bausteine wiederverwenden.</h2>
+        <p className="eyebrow">Zielgruppe</p>
+        <h2 className="section-title max-w-4xl">Gebaut für Menschen, die ihre besten Bausteine wiederverwenden.</h2>
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {audiences.map((audience) => (
             <div className="flex items-center gap-3 rounded-xl border border-ink/10 bg-white/60 p-4" key={audience}>
@@ -462,7 +489,7 @@ function Footer() {
           <img src="/app-logo.png" alt="" className="h-9 w-9 rounded-lg" />
           <div>
             <div className="font-semibold">SMART SnippetFlow</div>
-            <div className="text-sm text-graphite/60">Lokale Prompt- und Snippet-Bibliothek.</div>
+            <div className="text-sm text-graphite/60">Lokale Wissensbasis für Prompts, Code und Workflows.</div>
           </div>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-graphite/68">
