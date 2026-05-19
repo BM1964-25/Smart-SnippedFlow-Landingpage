@@ -440,7 +440,7 @@ function License() {
         <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_640px] xl:gap-20">
           <div>
             <p className="eyebrow text-white/55">Lizenzmodell</p>
-            <h2 className="max-w-3xl text-4xl font-semibold leading-[1.14] tracking-normal text-white sm:text-5xl">
+            <h2 className="section-title max-w-3xl text-white">
               Eine professionelle Jahreslizenz für produktive KI-Arbeit.
             </h2>
             <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/78">
