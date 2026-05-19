@@ -39,6 +39,18 @@ const legalLinks = [
   { label: "Widerrufsbelehrung", href: "https://www.built-smart-hub.com/widerrufsbelehrung" },
 ];
 
+const premiumLicenseFeatures = [
+  "12 Monate Nutzung für professionelle Einzelanwender",
+  "Lizenz für lokale Nutzung der App",
+  "Professionelle Arbeitsumgebung mit lokaler Wissensbasis",
+  "KI-gestützte Unterstützung innerhalb der App",
+  "Export und Import lokaler Arbeitsdaten",
+  "Nutzung eigener API-Keys über lokalen Proxy möglich",
+  "Automatische Verlängerung um weitere 12 Monate",
+  "Kündigungsfrist 1 Monat vor Ablauf",
+  "Sichere Online-Zahlung",
+];
+
 const features = [
   {
     icon: Library,
@@ -423,61 +435,145 @@ function LocalStorage() {
 
 function License() {
   return (
-    <section id="license" className="section bg-ink text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
-        <div>
-          <p className="eyebrow text-white/55">Lizenzmodell</p>
-          <h2 className="section-title text-white">Eine professionelle Jahreslizenz.</h2>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-            Für Anwender, die Prompts, Code-Snippets, Workflows und Vorlagen
-            täglich als produktive Arbeitsbausteine nutzen.
-          </p>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">
-            Die Lizenz ist bewusst einfach gehalten: einmal aktivieren, lokal
-            arbeiten und die eigene Wissensbasis über das Jahr hinweg
-            strukturiert ausbauen.
-          </p>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-white/56">
-            Ideal, wenn du regelmäßig mit KI, Code und wiederkehrenden Aufgaben
-            arbeitest und deine besten Bausteine nicht immer neu suchen oder
-            neu schreiben möchtest.
-          </p>
-        </div>
-        <div className="rounded-2xl border border-white bg-white/[0.12] p-6 shadow-glow sm:p-8">
-          <div className="flex items-start justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-semibold">Professional Jahreslizenz</h3>
-              <div className="mt-4 flex flex-wrap items-end gap-x-3 gap-y-1">
-                <span className="text-5xl font-semibold tracking-normal">99 €</span>
-                <span className="pb-1 text-white/64">pro Jahr</span>
-              </div>
-              <p className="mt-2 text-white/64">zzgl. 19% MwSt. · entspricht 8,25 € pro Monat</p>
-            </div>
-            <BadgeCheck className="h-14 w-14 shrink-0 text-[#9bc3ad]" />
+    <section id="license" className="bg-[#0b0b10] py-24 text-white sm:py-28">
+      <div className="mx-auto max-w-7xl space-y-24 px-5 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+          <div>
+            <p className="eyebrow text-white/55">Lizenzmodell</p>
+            <h2 className="section-title text-white">Eine professionelle Jahreslizenz.</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+              Für Anwender, die Prompts, Code-Snippets, Workflows und Vorlagen
+              täglich als produktive Arbeitsbausteine nutzen.
+            </p>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/70">
+              Die Lizenz ist bewusst einfach gehalten: einmal aktivieren, lokal
+              arbeiten und die eigene Wissensbasis über das Jahr hinweg
+              strukturiert ausbauen.
+            </p>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/56">
+              Ideal, wenn du regelmäßig mit KI, Code und wiederkehrenden Aufgaben
+              arbeitest und deine besten Bausteine nicht immer neu suchen oder
+              neu schreiben möchtest.
+            </p>
           </div>
-          <ul className="mt-7 space-y-4 text-white/80">
-            {[
-              "12 Monate Nutzung für professionelle Einzelanwender",
-              "Lokale Wissensbasis für Prompts, Code, Workflows und Notizen",
-              "KI-Unterstützung für Titel, Beschreibungen und Hinweise",
-              "Export und Import deiner Bibliothek",
-              "Automatische Verlängerung um weitere 12 Monate",
-              "Kündigungsfrist: 1 Monat vor Ablauf",
-              "Sichere Online-Zahlung",
-            ].map((item) => (
-              <li className="flex gap-3" key={item}>
-                <Check className="mt-1 h-4 w-4 shrink-0 text-[#9bc3ad]" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <CheckoutButton className="button mt-8 w-full justify-center bg-white text-ink hover:bg-mist">
-            Lizenz sichern
-            <ArrowRight className="h-4 w-4" />
-          </CheckoutButton>
+          <div className="rounded-2xl border border-white bg-white/[0.12] p-6 shadow-glow sm:p-8">
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <h3 className="text-2xl font-semibold">Professional Jahreslizenz</h3>
+                <div className="mt-4 flex flex-wrap items-end gap-x-3 gap-y-1">
+                  <span className="text-5xl font-semibold tracking-normal">99 €</span>
+                  <span className="pb-1 text-white/64">pro Jahr</span>
+                </div>
+                <p className="mt-2 text-white/64">zzgl. 19% MwSt. · entspricht 8,25 € pro Monat</p>
+              </div>
+              <BadgeCheck className="h-14 w-14 shrink-0 text-[#9bc3ad]" />
+            </div>
+            <ul className="mt-7 space-y-4 text-white/80">
+              {[
+                "12 Monate Nutzung für professionelle Einzelanwender",
+                "Lokale Wissensbasis für Prompts, Code, Workflows und Notizen",
+                "KI-Unterstützung für Titel, Beschreibungen und Hinweise",
+                "Export und Import deiner Bibliothek",
+                "Automatische Verlängerung um weitere 12 Monate",
+                "Kündigungsfrist: 1 Monat vor Ablauf",
+                "Sichere Online-Zahlung",
+              ].map((item) => (
+                <li className="flex gap-3" key={item}>
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-[#9bc3ad]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <CheckoutButton className="button mt-8 w-full justify-center bg-white text-ink hover:bg-mist">
+              Lizenz sichern
+              <ArrowRight className="h-4 w-4" />
+            </CheckoutButton>
+          </div>
         </div>
+        <PremiumLicenseVariantDetailed />
+        <PremiumLicenseVariantCompact />
       </div>
     </section>
+  );
+}
+
+function PremiumLicenseVariantDetailed() {
+  return (
+    <div className="rounded-[28px] border border-white/10 bg-[#0f1016] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.12)] sm:p-6">
+      <p className="mb-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#a0f5e8]/75">Variante 1</p>
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-20">
+        <div>
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Lizenzmodell</p>
+          <h2 className="max-w-3xl text-4xl font-semibold leading-[1.12] tracking-normal text-white sm:text-5xl">
+            Eine professionelle Jahreslizenz für produktive KI-Arbeit.
+          </h2>
+          <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/78">
+            Für Menschen, die wiederkehrende Aufgaben, Vorlagen und Arbeitsbausteine strukturiert nutzen möchten.
+            Die lokale Arbeitsweise unterstützt klare Prozesse, kontrollierte Datenhaltung und eine professionelle
+            Nutzung von KI im täglichen Arbeiten.
+          </p>
+          <p className="mt-6 max-w-2xl text-base leading-[1.65] text-white/64">
+            Die Jahreslizenz ist eine nachhaltige Investition in eine eigene Wissensbasis, die mit jedem Projekt
+            wertvoller wird und Arbeitsabläufe dauerhaft effizienter macht.
+          </p>
+        </div>
+        <PremiumPriceCard tone="mint" />
+      </div>
+    </div>
+  );
+}
+
+function PremiumLicenseVariantCompact() {
+  return (
+    <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-white/[0.045] to-white/[0.015] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.24)] sm:p-6">
+      <p className="mb-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3c0]/75">Variante O</p>
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-20">
+        <div>
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Lizenzmodell</p>
+          <h2 className="max-w-3xl text-4xl font-semibold leading-[1.14] tracking-normal text-white sm:text-5xl">
+            Eine professionelle Jahreslizenz für produktive KI-Arbeit.
+          </h2>
+          <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/76">
+            Eine ruhige Arbeitsumgebung für strukturierte Inhalte, wiederkehrende Aufgaben und professionelle
+            KI-Unterstützung. Die lokale Nutzung stärkt Kontrolle, Übersicht und konzentriertes Arbeiten.
+          </p>
+          <p className="mt-6 max-w-2xl text-base leading-[1.65] text-white/62">
+            Über die Zeit entsteht eine verlässliche Wissensbasis, die Prozesse beschleunigt, Qualität stabilisiert
+            und den Arbeitsalltag spürbar entlastet.
+          </p>
+        </div>
+        <PremiumPriceCard tone="turquoise" />
+      </div>
+    </div>
+  );
+}
+
+function PremiumPriceCard({ tone }: { tone: "mint" | "turquoise" }) {
+  const accent = tone === "mint" ? "#A0F5E8" : "#7DD3C0";
+
+  return (
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:p-10">
+      <h3 className="text-xl font-semibold text-white">Professional Jahreslizenz</h3>
+      <div className="mt-6 flex flex-wrap items-end gap-x-4 gap-y-2">
+        <span className="text-[56px] font-bold leading-none tracking-normal text-white">599 €</span>
+        <span className="pb-2 text-base text-white/60">pro Jahr</span>
+      </div>
+      <p className="mt-3 text-[13px] leading-6 text-white/50">
+        zzgl. 19 % MwSt. · entspricht 49,92 € netto pro Monat
+      </p>
+      <ul className="mt-8 space-y-4">
+        {premiumLicenseFeatures.map((item) => (
+          <li className="flex gap-3 text-[15px] leading-[1.5] text-white/85" key={item}>
+            <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: accent }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <CheckoutButton className="mt-10 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[10px] bg-gradient-to-r from-[#A0F5E8] to-[#7DD3C0] px-6 text-base font-semibold text-[#09100f] transition duration-200 hover:scale-[1.02] hover:brightness-110">
+        Lizenz sichern
+        <ArrowRight className="h-4 w-4" />
+      </CheckoutButton>
+    </div>
   );
 }
 
