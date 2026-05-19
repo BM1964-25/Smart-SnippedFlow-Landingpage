@@ -165,8 +165,8 @@ function App() {
   return (
     <main className="min-h-screen bg-paper text-ink">
       <Header />
-      <HeroVariant />
       <Hero />
+      <HeroVariant />
       <Problem />
       <FeatureGrid />
       <LocalStorage />
@@ -206,6 +206,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden border-b border-ink/10">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[0.72fr_1.28fr] lg:px-8 lg:pb-24 lg:pt-24">
         <div>
+          <p className="eyebrow mb-6">Header / Hero Variante 1</p>
           <p className="mb-5 inline-flex max-w-[360px] items-start gap-3 rounded-2xl border border-ink/10 bg-white/70 px-4 py-3 text-sm leading-5 text-graphite/80 shadow-sm backdrop-blur">
             <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-blue" />
             <span>
