@@ -594,6 +594,11 @@ function Footer() {
           label="Variante 4"
           slogan="Prompts, Code und Workflows lokal strukturiert wiederverwenden"
         />
+        <FooterVariant
+          appName="SMART SnippetFlow"
+          label="Variante 5"
+          slogan="Deine lokale Bibliothek für Prompts, Code, Workflows und Notizen"
+        />
       </div>
     </footer>
   );
