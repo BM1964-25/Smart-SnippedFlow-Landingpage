@@ -165,8 +165,6 @@ const faqs = [
 function App() {
   return (
     <main className="min-h-screen bg-paper text-ink">
-      <Header />
-      <Hero />
       <HeroVariant />
       <Problem />
       <FeatureGrid />
@@ -220,9 +218,9 @@ function Hero() {
             SMART SnippetFlow
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-graphite/75 sm:text-xl">
-            Die minimalistische Desktop-App, mit der du Prompts, Code-Snippets,
-            KI-Workflows, Notizen und Vorlagen strukturiert sammelst, lokal
-            speicherst und schnell wiederfindest.
+            Sammle Prompts, Code-Snippets, KI-Workflows und Notizen
+            strukturiert an einem lokalen Ort. So bleiben deine wichtigsten
+            Bausteine auffindbar und schnell bereit für den nächsten Einsatz.
           </p>
           <div className="mt-9 grid w-full max-w-[430px] grid-cols-1 gap-3 sm:grid-cols-2">
             <CheckoutButton className="button button-dark w-full">
@@ -248,38 +246,39 @@ function Hero() {
 
 function HeroVariant() {
   return (
-    <section className="relative min-h-[760px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
+    <section id="top" className="relative min-h-[760px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
       <div className="absolute inset-0">
-        <div className="absolute inset-y-24 left-[47%] w-[760px] overflow-hidden rounded-[26px] border border-white/10 opacity-58 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:left-[55%] lg:w-[880px]">
-          <img
-            src={heroScreenshotUrl}
-            alt=""
-            className="h-full w-full object-cover object-left-top"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09090d] via-[#09090d]/84 to-[#09090d]/44" />
-        <div className="absolute inset-0 bg-[#09090d]/32" />
+        <img
+          src={heroScreenshotUrl}
+          alt=""
+          className="h-full w-full object-cover object-left-top opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020813] via-[#07111f]/88 to-[#07111f]/24" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020813]/98 via-[#020813]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020813]/68 via-transparent to-[#020813]/18" />
       </div>
-      <div className="relative mx-auto flex min-h-[760px] max-w-7xl flex-col px-5 py-6 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
-          <a href="#top" className="flex items-center gap-3 font-semibold tracking-normal text-white">
+      <div className="relative border-b border-ink/10 bg-[#f8f6f1]/95 shadow-[0_18px_60px_rgba(2,8,19,0.18)] backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+          <a href="#top" className="flex items-center gap-3 font-semibold tracking-normal text-ink">
             <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
             <span>SMART SnippetFlow</span>
           </a>
-          <nav className="hidden items-center gap-7 text-sm text-white/68 md:flex">
-            <a href="#features" className="hover:text-white">Funktionen</a>
-            <a href="#local" className="hover:text-white">Lokal</a>
-            <a href="#license" className="hover:text-white">Lizenz</a>
-            <a href="#faq" className="hover:text-white">FAQ</a>
+          <nav className="hidden items-center gap-7 text-sm text-graphite/70 md:flex">
+            <a href="#features" className="hover:text-ink">Funktionen</a>
+            <a href="#local" className="hover:text-ink">Lokal</a>
+            <a href="#license" className="hover:text-ink">Lizenz</a>
+            <a href="#faq" className="hover:text-ink">FAQ</a>
           </nav>
-          <CheckoutButton className="hidden h-11 items-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb] sm:inline-flex">
+          <CheckoutButton className="hidden h-11 items-center gap-2 rounded-xl bg-ink px-5 text-sm font-semibold text-white transition hover:bg-ink/88 sm:inline-flex">
             Lizenz sichern
             <ArrowRight className="h-4 w-4" />
           </CheckoutButton>
         </div>
-        <div className="grid flex-1 items-center gap-10 py-16 lg:grid-cols-[0.72fr_1.28fr] lg:py-20">
-          <div className="max-w-3xl">
-            <p className="eyebrow text-[#A0F5E8]">Header / Hero Variante 2</p>
+      </div>
+      <div className="relative mx-auto flex min-h-[696px] max-w-7xl flex-col px-5 pb-6 sm:px-6 lg:px-8">
+        <div className="flex flex-1 items-center py-16 lg:py-20">
+          <div className="max-w-4xl">
+            <p className="eyebrow text-[#A0F5E8]">Lokale Produktivitäts-App</p>
             <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.08] px-4 py-2 text-sm text-white/76 backdrop-blur">
               <Sparkles className="h-4 w-4 text-[#A0F5E8]" />
               Lokale Produktivitäts-App für wiederverwendbare Bausteine
@@ -288,8 +287,9 @@ function HeroVariant() {
               SMART SnippetFlow
             </h2>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
-              Sammle Prompts, Code-Snippets, Workflows und Notizen an einem ruhigen Ort:
-              lokal gespeichert, klar strukturiert und schnell bereit für den nächsten Einsatz.
+              Sammle Prompts, Code-Snippets, KI-Workflows und Notizen strukturiert
+              an einem lokalen Ort. Auffindbar, klar geordnet und schnell bereit
+              für den nächsten Einsatz.
             </p>
             <div className="mt-9 grid w-full max-w-[460px] grid-cols-1 gap-3 sm:grid-cols-2">
               <CheckoutButton className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb]">
@@ -317,7 +317,6 @@ function HeroVariant() {
               ))}
             </div>
           </div>
-          <div className="hidden lg:block" />
         </div>
       </div>
     </section>
