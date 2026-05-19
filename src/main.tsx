@@ -166,6 +166,7 @@ function App() {
     <main className="min-h-screen bg-paper text-ink">
       <Header />
       <Hero />
+      <HeroVariant />
       <Problem />
       <FeatureGrid />
       <LocalStorage />
@@ -238,6 +239,80 @@ function Hero() {
           </div>
         </div>
         <AppMockup />
+      </div>
+    </section>
+  );
+}
+
+function HeroVariant() {
+  return (
+    <section className="relative min-h-[760px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
+      <div className="absolute inset-0">
+        <div className="absolute inset-y-16 left-1/2 w-[920px] -translate-x-[12%] opacity-55 blur-[0.2px] sm:w-[1100px] lg:w-[1220px]">
+          <AppMockup />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#09090d] via-[#09090d]/88 to-[#09090d]/48" />
+        <div className="absolute inset-0 bg-[#09090d]/35" />
+      </div>
+      <div className="relative mx-auto flex min-h-[760px] max-w-7xl flex-col px-5 py-6 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
+          <a href="#top" className="flex items-center gap-3 font-semibold tracking-normal text-white">
+            <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
+            <span>SMART SnippetFlow</span>
+          </a>
+          <nav className="hidden items-center gap-7 text-sm text-white/68 md:flex">
+            <a href="#features" className="hover:text-white">Funktionen</a>
+            <a href="#local" className="hover:text-white">Lokal</a>
+            <a href="#license" className="hover:text-white">Lizenz</a>
+            <a href="#faq" className="hover:text-white">FAQ</a>
+          </nav>
+          <CheckoutButton className="hidden h-11 items-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb] sm:inline-flex">
+            Lizenz sichern
+            <ArrowRight className="h-4 w-4" />
+          </CheckoutButton>
+        </div>
+        <div className="grid flex-1 items-center gap-10 py-16 lg:grid-cols-[0.72fr_1.28fr] lg:py-20">
+          <div className="max-w-3xl">
+            <p className="eyebrow text-[#A0F5E8]">Header / Hero Variante 2</p>
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.08] px-4 py-2 text-sm text-white/76 backdrop-blur">
+              <Sparkles className="h-4 w-4 text-[#A0F5E8]" />
+              Lokale Produktivitäts-App für wiederverwendbare Bausteine
+            </p>
+            <h2 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-white sm:text-6xl lg:text-7xl">
+              SMART SnippetFlow
+            </h2>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
+              Sammle Prompts, Code-Snippets, Workflows und Notizen an einem ruhigen Ort:
+              lokal gespeichert, klar strukturiert und schnell bereit für den nächsten Einsatz.
+            </p>
+            <div className="mt-9 grid w-full max-w-[460px] grid-cols-1 gap-3 sm:grid-cols-2">
+              <CheckoutButton className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb]">
+                Jetzt kaufen
+                <ArrowRight className="h-4 w-4" />
+              </CheckoutButton>
+              <a className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/[0.06] px-5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12]" href="#features">
+                Ablauf ansehen
+                <Play className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
+              {[
+                ["Lokal", "Daten bleiben auf deinem Rechner"],
+                ["Strukturiert", "Prompts, Code und Notizen sortieren"],
+                ["Wiederverwendbar", "Bausteine schneller finden"],
+              ].map(([title, text]) => (
+                <div className="rounded-xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur" key={title}>
+                  <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                    <Check className="h-4 w-4 text-[#A0F5E8]" />
+                    {title}
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-white/62">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="hidden lg:block" />
+        </div>
       </div>
     </section>
   );
