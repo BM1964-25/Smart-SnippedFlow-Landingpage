@@ -589,6 +589,11 @@ function Footer() {
           label="Variante 3"
           slogan="Intelligente Lösungen für smartes Bauen"
         />
+        <FooterVariant
+          appName="BuiltSmart Hub"
+          label="Variante 4"
+          slogan="Prompts, Code und Workflows lokal strukturiert wiederverwenden"
+        />
       </div>
     </footer>
   );
