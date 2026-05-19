@@ -585,7 +585,7 @@ function Footer() {
 
 function FooterVariant({ appName, slogan }: { appName: string; slogan: string }) {
   return (
-    <section className="rounded-xl border border-ink/10 bg-white/48 px-5 py-5 shadow-sm">
+    <section>
       <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
         <div className="flex flex-col items-center gap-3 md:flex-row">
           <img src={logoUrl} alt="" className="h-11 w-11 rounded-xl shadow-sm" />
