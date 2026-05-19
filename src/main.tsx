@@ -28,14 +28,15 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
-const purchaseUrl = "https://buy.stripe.com/smart-snippetflow";
+const checkoutFunctionUrl = import.meta.env.VITE_CHECKOUT_FUNCTION_URL as string | undefined;
+const fallbackPaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK as string | undefined;
 const logoUrl = `${import.meta.env.BASE_URL}app-logo.png`;
 
 const legalLinks = [
   { label: "Impressum", href: "https://www.built-smart-hub.com/impressum" },
   { label: "Datenschutz", href: "https://www.built-smart-hub.com/datenschutz" },
   { label: "AGB", href: "https://www.built-smart-hub.com/agb" },
-  { label: "Widerrufsbelehrung", href: "https://www.built-smart-hub.com/widerrufbelehrung" },
+  { label: "Widerrufsbelehrung", href: "https://www.built-smart-hub.com/widerrufsbelehrung" },
 ];
 
 const features = [
@@ -178,10 +179,10 @@ function Header() {
           <a href="#license" className="hover:text-ink">Lizenz</a>
           <a href="#faq" className="hover:text-ink">FAQ</a>
         </nav>
-        <a className="button button-dark hidden sm:inline-flex" href={purchaseUrl}>
+        <CheckoutButton className="button button-dark hidden sm:inline-flex">
           Lizenz sichern
           <ArrowRight className="h-4 w-4" />
-        </a>
+        </CheckoutButton>
       </div>
     </header>
   );
@@ -209,10 +210,10 @@ function Hero() {
             speicherst und schnell wiederfindest.
           </p>
           <div className="mt-9 grid w-full max-w-[430px] grid-cols-1 gap-3 sm:grid-cols-2">
-            <a className="button button-dark w-full" href={purchaseUrl}>
+            <CheckoutButton className="button button-dark w-full">
               Jetzt kaufen
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </CheckoutButton>
             <a className="button button-light w-full" href="#features">
               Funktionen ansehen
               <Play className="h-4 w-4" />
@@ -470,13 +471,59 @@ function License() {
               </li>
             ))}
           </ul>
-          <a className="button mt-8 w-full justify-center bg-white text-ink hover:bg-mist" href={purchaseUrl}>
+          <CheckoutButton className="button mt-8 w-full justify-center bg-white text-ink hover:bg-mist">
             Lizenz sichern
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </CheckoutButton>
         </div>
       </div>
     </section>
+  );
+}
+
+function CheckoutButton({ children, className }: { children: React.ReactNode; className: string }) {
+  const [state, setState] = React.useState<"idle" | "loading" | "error">("idle");
+
+  async function handleCheckout() {
+    if (!checkoutFunctionUrl) {
+      if (fallbackPaymentLink) {
+        window.location.href = fallbackPaymentLink;
+        return;
+      }
+
+      setState("error");
+      return;
+    }
+
+    setState("loading");
+
+    try {
+      const response = await fetch(checkoutFunctionUrl, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          successUrl: `${window.location.origin}${window.location.pathname}?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
+          cancelUrl: `${window.location.origin}${window.location.pathname}#license`,
+        }),
+      });
+      const payload = (await response.json()) as { url?: string; error?: string };
+
+      if (!response.ok || !payload.url) {
+        throw new Error(payload.error ?? "Checkout konnte nicht gestartet werden.");
+      }
+
+      window.location.href = payload.url;
+    } catch {
+      setState("error");
+    }
+  }
+
+  return (
+    <button type="button" className={className} onClick={() => void handleCheckout()} disabled={state === "loading"}>
+      {state === "loading" ? "Checkout wird geöffnet..." : state === "error" ? "Checkout nicht konfiguriert" : children}
+    </button>
   );
 }
 
@@ -526,23 +573,54 @@ function FAQ() {
 function Footer() {
   return (
     <footer className="border-t border-ink/10 bg-paper">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-        <div className="flex items-center gap-3">
-          <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg" />
-          <div>
-            <div className="font-semibold">SMART SnippetFlow</div>
-            <div className="text-sm text-graphite/60">Lokale Wissensbasis für Prompts, Code und Workflows.</div>
-          </div>
-        </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-graphite/68">
-          {legalLinks.map((link) => (
-            <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
-              {link.label}
-            </a>
-          ))}
-        </nav>
+      <div className="mx-auto max-w-7xl space-y-4 px-5 py-10 sm:px-6 lg:px-8">
+        <FooterVariant
+          appName="SMART SnippetFlow"
+          label="Variante 1"
+          slogan="Lokale Wissensbasis für Prompts, Code, Workflows und Notizen"
+        />
+        <FooterVariant
+          appName="BuiltSmart Hub"
+          label="Variante 2"
+          slogan="Intelligente Lösungen für smartes Bauen"
+        />
+        <FooterVariant
+          appName="BuiltSmart Hub"
+          label="Variante 3"
+          slogan="Intelligente Lösungen für smartes Bauen"
+        />
       </div>
     </footer>
+  );
+}
+
+function FooterVariant({ appName, label, slogan }: { appName: string; label: string; slogan: string }) {
+  return (
+    <section className="rounded-xl border border-ink/10 bg-white/48 px-5 py-5 shadow-sm">
+      <div className="mb-4 text-xs font-semibold uppercase text-blue">{label}</div>
+      <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
+        <div className="flex flex-col items-center gap-3 md:flex-row">
+          <img src={logoUrl} alt="" className="h-11 w-11 rounded-xl shadow-sm" />
+          <div>
+            <div className="font-semibold text-ink">{appName}</div>
+            <div className="mt-1 text-sm text-graphite/60">{slogan}</div>
+          </div>
+        </div>
+        <div className="text-sm text-graphite/68 md:text-right">
+          <div>© 2026 BuiltSmart Hub · Powered by SmartBuilt-AI</div>
+          <nav className="mt-2 flex flex-wrap justify-center gap-x-2 gap-y-1 md:justify-end">
+            {legalLinks.map((link, index) => (
+              <span className="inline-flex items-center gap-2" key={link.href}>
+                {index > 0 ? <span className="text-graphite/35">|</span> : null}
+                <a className="hover:text-ink" href={link.href} rel="noreferrer" target="_blank">
+                  {link.label}
+                </a>
+              </span>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </section>
   );
 }
 
