@@ -250,7 +250,7 @@ function HeroVariant() {
   return (
     <section className="relative min-h-[760px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
       <div className="absolute inset-0">
-        <div className="absolute inset-y-10 left-[35%] w-[1100px] overflow-hidden rounded-[28px] border border-white/10 opacity-62 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:left-[42%] lg:w-[1260px]">
+        <div className="absolute inset-y-24 left-[47%] w-[760px] overflow-hidden rounded-[26px] border border-white/10 opacity-58 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:left-[55%] lg:w-[880px]">
           <img
             src={heroScreenshotUrl}
             alt=""
