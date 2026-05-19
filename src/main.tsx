@@ -606,7 +606,7 @@ function FooterVariant({ appName, slogan }: { appName: string; slogan: string })
           </div>
         </div>
         <div className="text-sm text-graphite/68 md:text-right">
-          <div>© 2026 BuiltSmart-AI · Powered by SmartBuilt Hub</div>
+          <div>© 2026 SmartBuilt-AI · Powered by BuiltSmart Hub</div>
           <nav className="mt-2 flex flex-wrap justify-center gap-x-2 gap-y-1 md:justify-end">
             {legalLinks.map((link, index) => (
               <span className="inline-flex items-center gap-2" key={link.href}>
