@@ -492,6 +492,7 @@ function License() {
         </div>
         <PremiumLicenseVariantDetailed />
         <PremiumLicenseVariantCompact />
+        <PremiumLicenseVariantFramed />
       </div>
     </section>
   );
@@ -565,6 +566,66 @@ function PremiumPriceCard({ tone }: { tone: "mint" | "turquoise" }) {
         {premiumLicenseFeatures.map((item) => (
           <li className="flex gap-3 text-[15px] leading-[1.5] text-white/85" key={item}>
             <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: accent }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <CheckoutButton className="mt-10 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[10px] bg-gradient-to-r from-[#A0F5E8] to-[#7DD3C0] px-6 text-base font-semibold text-[#09100f] transition duration-200 hover:scale-[1.02] hover:brightness-110">
+        Lizenz sichern
+        <ArrowRight className="h-4 w-4" />
+      </CheckoutButton>
+    </div>
+  );
+}
+
+function PremiumLicenseVariantFramed() {
+  return (
+    <div className="rounded-[28px] border border-white/10 bg-[#0d0e14] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.12)] sm:p-6">
+      <p className="mb-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#a0f5e8]/75">
+        Variante mit weißem Rahmen
+      </p>
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-20">
+        <div>
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Lizenzmodell</p>
+          <h2 className="max-w-3xl text-4xl font-semibold leading-[1.14] tracking-normal text-white sm:text-5xl">
+            Eine professionelle Jahreslizenz für produktive KI-Arbeit.
+          </h2>
+          <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/78">
+            Eine strukturierte Arbeitsumgebung hilft dabei, wiederkehrende Aufgaben, Vorlagen und produktive
+            Arbeitsbausteine verlässlich zu organisieren. Lokale Nutzung, klare Datenkontrolle und professionelle
+            KI-Unterstützung schaffen die Grundlage für konzentriertes Arbeiten.
+          </p>
+          <p className="mt-6 max-w-2xl text-base leading-[1.65] text-white/64">
+            Mit der Jahreslizenz entsteht eine langfristig nutzbare Wissensbasis, die Prozesse beschleunigt,
+            Ergebnisse konsistenter macht und den professionellen Arbeitsalltag dauerhaft entlastet.
+          </p>
+        </div>
+        <PremiumFramedPriceCard />
+      </div>
+    </div>
+  );
+}
+
+function PremiumFramedPriceCard() {
+  return (
+    <div className="rounded-2xl border border-white bg-white/[0.09] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:p-12">
+      <div className="flex items-start justify-between gap-6">
+        <div>
+          <h3 className="text-xl font-semibold text-white">Professional Jahreslizenz</h3>
+          <div className="mt-6 flex flex-wrap items-end gap-x-4 gap-y-2">
+            <span className="text-[56px] font-bold leading-none tracking-normal text-white">599 €</span>
+            <span className="pb-2 text-base text-white/60">pro Jahr</span>
+          </div>
+          <p className="mt-3 text-[13px] leading-6 text-white/54">
+            zzgl. 19 % MwSt. · entspricht 49,92 € netto pro Monat
+          </p>
+        </div>
+        <BadgeCheck className="h-14 w-14 shrink-0 text-[#A0F5E8]" />
+      </div>
+      <ul className="mt-8 space-y-4">
+        {premiumLicenseFeatures.map((item) => (
+          <li className="flex gap-3 text-[15px] leading-[1.5] text-white/85" key={item}>
+            <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#A0F5E8]" />
             <span>{item}</span>
           </li>
         ))}
