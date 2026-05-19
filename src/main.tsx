@@ -165,8 +165,8 @@ function App() {
   return (
     <main className="min-h-screen bg-paper text-ink">
       <Header />
-      <Hero />
       <HeroVariant />
+      <Hero />
       <Problem />
       <FeatureGrid />
       <LocalStorage />
