@@ -602,7 +602,7 @@ function Footer() {
         <FooterVariant
           appName="SMART SnippetFlow"
           label="Variante 6"
-          slogan="Strukturiertes Arbeitswissen lokal sichern und jederzeit wiederverwenden"
+          slogan="Lokale Wissensbasis für Prompts, Code, Workflows und Notizen - strukturiert sichern und jederzeit wiederverwenden"
         />
       </div>
     </footer>
