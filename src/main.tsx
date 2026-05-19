@@ -502,7 +502,7 @@ function PremiumLicenseVariantDetailed() {
   return (
     <div className="rounded-[28px] border border-white/10 bg-[#0f1016] p-5 shadow-[0_4px_24px_rgba(0,0,0,0.12)] sm:p-6">
       <p className="mb-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#a0f5e8]/75">Variante 1</p>
-      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-20">
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_640px] xl:gap-20">
         <div>
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Lizenzmodell</p>
           <h2 className="max-w-3xl text-4xl font-semibold leading-[1.12] tracking-normal text-white sm:text-5xl">
@@ -528,7 +528,7 @@ function PremiumLicenseVariantCompact() {
   return (
     <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-white/[0.045] to-white/[0.015] p-5 shadow-[0_8px_32px_rgba(0,0,0,0.24)] sm:p-6">
       <p className="mb-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3c0]/75">Variante O</p>
-      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-20">
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_640px] xl:gap-20">
         <div>
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Lizenzmodell</p>
           <h2 className="max-w-3xl text-4xl font-semibold leading-[1.14] tracking-normal text-white sm:text-5xl">
@@ -566,7 +566,7 @@ function PremiumPriceCard({ tone }: { tone: "mint" | "turquoise" }) {
         {premiumLicenseFeatures.map((item) => (
           <li className="flex gap-3 text-[15px] leading-[1.5] text-white/85" key={item}>
             <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: accent }} />
-            <span>{item}</span>
+            <span className="xl:whitespace-nowrap">{item}</span>
           </li>
         ))}
       </ul>
@@ -584,7 +584,7 @@ function PremiumLicenseVariantFramed() {
       <p className="mb-8 text-xs font-semibold uppercase tracking-[0.22em] text-[#a0f5e8]/75">
         Variante mit weißem Rahmen
       </p>
-      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_480px] xl:gap-20">
+      <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1fr)_640px] xl:gap-20">
         <div>
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Lizenzmodell</p>
           <h2 className="max-w-3xl text-4xl font-semibold leading-[1.14] tracking-normal text-white sm:text-5xl">
@@ -626,7 +626,7 @@ function PremiumFramedPriceCard() {
         {premiumLicenseFeatures.map((item) => (
           <li className="flex gap-3 text-[15px] leading-[1.5] text-white/85" key={item}>
             <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#A0F5E8]" />
-            <span>{item}</span>
+            <span className="xl:whitespace-nowrap">{item}</span>
           </li>
         ))}
       </ul>
