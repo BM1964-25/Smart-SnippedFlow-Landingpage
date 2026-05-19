@@ -31,6 +31,7 @@ import "./styles.css";
 const checkoutFunctionUrl = import.meta.env.VITE_CHECKOUT_FUNCTION_URL as string | undefined;
 const fallbackPaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK as string | undefined;
 const logoUrl = `${import.meta.env.BASE_URL}app-logo.png`;
+const heroScreenshotUrl = `${import.meta.env.BASE_URL}hero-app-screenshot.png`;
 
 const legalLinks = [
   { label: "Impressum", href: "https://www.built-smart-hub.com/impressum" },
@@ -249,11 +250,15 @@ function HeroVariant() {
   return (
     <section className="relative min-h-[760px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
       <div className="absolute inset-0">
-        <div className="absolute inset-y-16 left-1/2 w-[920px] -translate-x-[12%] opacity-55 blur-[0.2px] sm:w-[1100px] lg:w-[1220px]">
-          <AppMockup />
+        <div className="absolute inset-y-10 left-[35%] w-[1100px] overflow-hidden rounded-[28px] border border-white/10 opacity-62 shadow-[0_24px_80px_rgba(0,0,0,0.45)] sm:left-[42%] lg:w-[1260px]">
+          <img
+            src={heroScreenshotUrl}
+            alt=""
+            className="h-full w-full object-cover object-left-top"
+          />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09090d] via-[#09090d]/88 to-[#09090d]/48" />
-        <div className="absolute inset-0 bg-[#09090d]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#09090d] via-[#09090d]/84 to-[#09090d]/44" />
+        <div className="absolute inset-0 bg-[#09090d]/32" />
       </div>
       <div className="relative mx-auto flex min-h-[760px] max-w-7xl flex-col px-5 py-6 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 backdrop-blur-xl">
