@@ -573,35 +573,9 @@ function FAQ() {
 function Footer() {
   return (
     <footer className="border-t border-ink/10 bg-paper">
-      <div className="mx-auto max-w-7xl space-y-4 px-5 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
         <FooterVariant
           appName="SMART SnippetFlow"
-          label="Variante 1"
-          slogan="Lokale Wissensbasis für Prompts, Code, Workflows und Notizen"
-        />
-        <FooterVariant
-          appName="BuiltSmart Hub"
-          label="Variante 2"
-          slogan="Intelligente Lösungen für smartes Bauen"
-        />
-        <FooterVariant
-          appName="BuiltSmart Hub"
-          label="Variante 3"
-          slogan="Intelligente Lösungen für smartes Bauen"
-        />
-        <FooterVariant
-          appName="BuiltSmart Hub"
-          label="Variante 4"
-          slogan="Prompts, Code und Workflows lokal strukturiert wiederverwenden"
-        />
-        <FooterVariant
-          appName="SMART SnippetFlow"
-          label="Variante 5"
-          slogan="Deine lokale Bibliothek für Prompts, Code, Workflows und Notizen"
-        />
-        <FooterVariant
-          appName="SMART SnippetFlow"
-          label="Variante 6"
           slogan="Lokale Wissensbasis für Prompts, Code, Workflows und Notizen"
         />
       </div>
@@ -609,10 +583,9 @@ function Footer() {
   );
 }
 
-function FooterVariant({ appName, label, slogan }: { appName: string; label: string; slogan: string }) {
+function FooterVariant({ appName, slogan }: { appName: string; slogan: string }) {
   return (
     <section className="rounded-xl border border-ink/10 bg-white/48 px-5 py-5 shadow-sm">
-      <div className="mb-4 text-xs font-semibold uppercase text-blue">{label}</div>
       <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
         <div className="flex flex-col items-center gap-3 md:flex-row">
           <img src={logoUrl} alt="" className="h-11 w-11 rounded-xl shadow-sm" />
