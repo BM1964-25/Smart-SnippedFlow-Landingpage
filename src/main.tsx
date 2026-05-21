@@ -1,4 +1,4 @@
-import React from "react";
+import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom/client";
 import {
   ArrowRight,
@@ -14,22 +14,16 @@ import {
   Library,
   Lock,
   NotebookText,
-  PanelLeftClose,
-  Play,
-  Plus,
   Search,
-  Settings,
   Sparkles,
   Star,
   Tags,
-  Trash2,
   Users,
   Workflow,
+  X,
 } from "lucide-react";
 import "./styles.css";
 
-const checkoutFunctionUrl = import.meta.env.VITE_CHECKOUT_FUNCTION_URL as string | undefined;
-const fallbackPaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK as string | undefined;
 const logoUrl = `${import.meta.env.BASE_URL}app-logo.png`;
 const heroScreenshotUrl = `${import.meta.env.BASE_URL}hero-app-screenshot.png`;
 
@@ -42,11 +36,11 @@ const legalLinks = [
 
 const premiumLicenseFeatures = [
   "12 Monate Nutzung für professionelle Einzelanwender",
-  "Lizenz für lokale Nutzung der App",
-  "Professionelle Arbeitsumgebung mit lokaler Wissensbasis",
+  "Nutzung der App im Webbrowser",
+  "Professionelle Arbeitsumgebung mit persönlicher Wissensbibliothek",
   "KI-gestützte Unterstützung innerhalb der App",
-  "Export und Import lokaler Arbeitsdaten",
-  "Nutzung eigener API-Keys über lokalen Proxy möglich",
+  "Export und Import eigener Arbeitsdaten",
+  "KI-Nutzung mit eigenem Anthropic API-Key",
   "Automatische Verlängerung um weitere 12 Monate",
   "Kündigungsfrist 1 Monat vor Ablauf",
   "Sichere Online-Zahlung",
@@ -56,22 +50,22 @@ const features = [
   {
     icon: Library,
     title: "Prompts verwalten",
-    text: "Sammle wiederverwendbare Prompts mit Kontext, Struktur und sauberer Beschreibung.",
+    text: "Sammle wiederverwendbare Prompts mit Kontext, Struktur und klarer Beschreibung.",
   },
   {
     icon: Code2,
     title: "Code-Snippets speichern",
-    text: "Lege kleine Bausteine, Skripte und Beispiele auffindbar ab, ohne im Dateichaos zu suchen.",
+    text: "Lege Code-Beispiele, Skripte und wiederkehrende Lösungen auffindbar ab.",
   },
   {
     icon: Workflow,
     title: "Workflows dokumentieren",
-    text: "Halte mehrstufige KI-Abläufe, Routinen und Produktionsschritte kompakt fest.",
+    text: "Halte mehrstufige KI-Abläufe, Routinen und Arbeitsschritte kompakt fest.",
   },
   {
     icon: NotebookText,
     title: "Notizen organisieren",
-    text: "Nutze die Bibliothek auch für Denkzettel, Projektideen und wiederkehrende Vorlagen.",
+    text: "Speichere Projektideen, Hinweise und persönliche Arbeitsnotizen an einem zentralen Ort.",
   },
   {
     icon: Tags,
@@ -81,27 +75,27 @@ const features = [
   {
     icon: Heart,
     title: "Favoriten",
-    text: "Markiere die wichtigsten Snippets und Prompts für schnellen Zugriff.",
+    text: "Markiere wichtige Prompts, Snippets und Notizen für schnellen Zugriff.",
   },
   {
     icon: Database,
-    title: "Lokale Speicherung",
-    text: "Deine Inhalte bleiben auf deinem Rechner und werden nicht automatisch in eine Cloud übertragen.",
+    title: "Eigener Arbeitsbereich",
+    text: "Jeder Nutzer arbeitet in seinem eigenen Konto mit getrennten Inhalten.",
   },
   {
     icon: FileJson,
     title: "Export und Import",
-    text: "Sichere deine Bibliothek und nimm deine Inhalte mit, wenn du sie später wiederherstellen möchtest.",
+    text: "Sichere deine Bibliothek und stelle sie bei Bedarf wieder her.",
   },
   {
     icon: BrainCircuit,
-    title: "KI-Vorschläge",
+    title: "KI-Unterstützung",
     text: "Lass passende Titel, Kurzbeschreibungen und ergänzende Hinweise für neue Einträge vorbereiten.",
   },
   {
     icon: Braces,
-    title: "Direkte Vorschau",
-    text: "Prüfe Inhalte wie HTML, CSS, JavaScript und Markdown direkt beim Arbeiten.",
+    title: "Live-Preview",
+    text: "Prüfe HTML, CSS, JavaScript und Markdown direkt beim Arbeiten.",
   },
   {
     icon: Search,
@@ -117,28 +111,48 @@ const features = [
 
 const audiences = [
   "Entwickler",
-  "KI-Nutzer",
+  "KI-Anwender",
   "Content-Ersteller",
   "Selbstständige",
-  "private Anwender",
-  "Menschen mit wiederverwendbaren Prompts, Snippets und Workflows",
+  "Private Anwender",
+  "Anwender mit wiederkehrenden Arbeitsabläufen",
 ];
 
 const faqs = [
   {
     question: "Läuft die App lokal?",
     answer:
-      "Ja. SMART SnippetFlow ist als lokale Desktop-App gedacht und speichert deine Bibliothek auf deinem Rechner.",
+      "SMART SnippetFlow läuft direkt im Webbrowser und kann über einen Link geöffnet werden. Eine Installation ist nicht erforderlich.",
   },
   {
-    question: "Werden Daten in der Cloud gespeichert?",
+    question: "Werden meine Inhalte in der Cloud gespeichert?",
     answer:
-      "Nein. Deine Inhalte bleiben lokal auf deinem Rechner. Es gibt in der Einzelplatzversion keine automatische Cloud-Ablage.",
+      "Nein. Deine Inhalte werden lokal im Browser gespeichert. Über JSON Export und Import kannst du sie sichern oder auf ein anderes Gerät übertragen.",
   },
   {
     question: "Gibt es eine Windows- und macOS-Version?",
     answer:
-      "Ja. SMART SnippetFlow ist für Windows und macOS vorgesehen. Die Lizenz ist als Einzelplatzversion gedacht und wird je Installation bzw. Arbeitsplatz genutzt.",
+      "SMART SnippetFlow ist browserbasiert und kann auf Windows, macOS und anderen modernen Systemen genutzt werden.",
+  },
+  {
+    question: "Brauche ich ein Nutzerkonto?",
+    answer:
+      "Für Trial, Kauf und Lizenzprüfung kann ein Nutzerkonto bzw. Login per E-Mail/Magic Link erforderlich sein. Deine Inhalte werden dadurch nicht automatisch in der Cloud gespeichert.",
+  },
+  {
+    question: "Können andere Nutzer auf meine Daten zugreifen?",
+    answer:
+      "Nein. Deine Inhalte liegen lokal in deinem Browser. Andere Nutzer haben keinen Zugriff darauf.",
+  },
+  {
+    question: "Kann ich Daten exportieren?",
+    answer:
+      "Ja. Du kannst deine Bibliothek als JSON exportieren und später wieder importieren.",
+  },
+  {
+    question: "Gibt es eine kostenlose Testphase?",
+    answer:
+      "Ja. Du kannst die App 7 Tage kostenlos mit vollem Funktionsumfang testen.",
   },
   {
     question: "Wie funktioniert die Lizenz?",
@@ -146,107 +160,43 @@ const faqs = [
       "Du erhältst eine Jahreslizenz für 12 Monate. Sie verlängert sich automatisch um weitere 12 Monate, wenn sie nicht spätestens 1 Monat vor Ablauf gekündigt wird.",
   },
   {
-    question: "Kann ich Daten exportieren?",
+    question: "Kann ich mehrere Lizenzen kaufen?",
     answer:
-      "Ja. Du kannst deine Bibliothek exportieren und später wieder importieren.",
+      "Ja. Du kannst mehrere Lizenzen derselben App kaufen, zum Beispiel 5 Lizenzen für 5 getrennte Nutzer.",
+  },
+  {
+    question: "Kann ich mehrere Apps zusammen kaufen?",
+    answer:
+      "In der ersten Version wird pro Checkout eine App gekauft. Mehrere unterschiedliche Apps in einem gemeinsamen Checkout sind für später vorgesehen.",
   },
   {
     question: "Gibt es KI-Funktionen?",
     answer:
-      "Ja. Die App kann dich bei Titeln, Kurzbeschreibungen und ergänzenden Hinweisen unterstützen, bleibt aber bewusst schlank.",
-  },
-  {
-    question: "Brauche ich ein Nutzerkonto?",
-    answer:
-      "Für die lokale Nutzung ist kein klassisches Online-Konto nötig. Kauf und Lizenzaktivierung laufen über einen sicheren Online-Prozess.",
+      "Ja. Die App kann dich bei Titeln, Kurzbeschreibungen und ergänzenden Hinweisen unterstützen. KI-Funktionen können optional mit eigenem API-Key genutzt werden.",
   },
 ];
 
 function App() {
+  const [isPreorderOpen, setIsPreorderOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-paper text-ink">
-      <HeroVariant />
+      <HeroVariant onPreorderClick={() => setIsPreorderOpen(true)} />
       <Problem />
       <FeatureGrid />
       <LocalStorage />
-      <License />
+      <License onPreorderClick={() => setIsPreorderOpen(true)} />
       <Audience />
       <FAQ />
       <Footer />
+      <PreorderDialog isOpen={isPreorderOpen} onClose={() => setIsPreorderOpen(false)} />
     </main>
   );
 }
 
-function Header() {
+function HeroVariant({ onPreorderClick }: { onPreorderClick: () => void }) {
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
-        <a href="#top" className="flex items-center gap-3 font-semibold tracking-normal">
-          <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
-          <span>SMART SnippetFlow</span>
-        </a>
-        <nav className="hidden items-center gap-7 text-sm text-graphite/70 md:flex">
-          <a href="#features" className="hover:text-ink">Funktionen</a>
-          <a href="#local" className="hover:text-ink">Lokal</a>
-          <a href="#license" className="hover:text-ink">Lizenz</a>
-          <a href="#faq" className="hover:text-ink">FAQ</a>
-        </nav>
-        <CheckoutButton className="button button-dark hidden sm:inline-flex">
-          Lizenz sichern
-          <ArrowRight className="h-4 w-4" />
-        </CheckoutButton>
-      </div>
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden border-b border-ink/10">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-16 sm:px-6 sm:pt-20 lg:grid-cols-[0.72fr_1.28fr] lg:px-8 lg:pb-24 lg:pt-24">
-        <div>
-          <p className="eyebrow mb-6">Header / Hero Variante 1</p>
-          <p className="mb-5 inline-flex max-w-[360px] items-start gap-3 rounded-2xl border border-ink/10 bg-white/70 px-4 py-3 text-sm leading-5 text-graphite/80 shadow-sm backdrop-blur">
-            <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-blue" />
-            <span>
-              Lokale Wissensbasis für
-              <br />
-              Prompts, Code, Workflows und Notizen
-            </span>
-          </p>
-          <h1 className="max-w-3xl text-5xl font-semibold leading-[1.03] tracking-normal text-ink sm:text-6xl lg:text-7xl">
-            SMART SnippetFlow
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-graphite/75 sm:text-xl">
-            Sammle Prompts, Code-Snippets, KI-Workflows und Notizen
-            strukturiert an einem lokalen Ort. So bleiben deine wichtigsten
-            Bausteine auffindbar und schnell bereit für den nächsten Einsatz.
-          </p>
-          <div className="mt-9 grid w-full max-w-[430px] grid-cols-1 gap-3 sm:grid-cols-2">
-            <CheckoutButton className="button button-dark w-full">
-              Jetzt kaufen
-              <ArrowRight className="h-4 w-4" />
-            </CheckoutButton>
-            <a className="button button-light w-full" href="#features">
-              Funktionen ansehen
-              <Play className="h-4 w-4" />
-            </a>
-          </div>
-          <div className="mt-8 grid w-full max-w-[430px] grid-cols-1 gap-3 text-sm text-graphite/70 sm:grid-cols-3">
-            <TrustItem>Lokal gespeichert</TrustItem>
-            <TrustItem>Keine Cloud</TrustItem>
-            <TrustItem>Export möglich</TrustItem>
-          </div>
-        </div>
-        <AppMockup />
-      </div>
-    </section>
-  );
-}
-
-function HeroVariant() {
-  return (
-    <section id="top" className="relative min-h-[760px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
+    <section id="top" className="relative min-h-[680px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
       <div className="absolute inset-0">
         <img
           src={heroScreenshotUrl}
@@ -265,50 +215,58 @@ function HeroVariant() {
           </a>
           <nav className="hidden items-center gap-7 text-sm text-graphite/70 md:flex">
             <a href="#features" className="hover:text-ink">Funktionen</a>
-            <a href="#local" className="hover:text-ink">Lokal</a>
+            <a href="#local" className="hover:text-ink">Konto</a>
             <a href="#license" className="hover:text-ink">Lizenz</a>
             <a href="#faq" className="hover:text-ink">FAQ</a>
           </nav>
-          <CheckoutButton className="hidden h-11 items-center gap-2 rounded-xl bg-ink px-5 text-sm font-semibold text-white transition hover:bg-ink/88 sm:inline-flex">
+          <button
+            type="button"
+            className="hidden h-11 items-center gap-2 rounded-xl bg-ink px-5 text-sm font-semibold text-white transition hover:bg-ink/88 sm:inline-flex"
+            onClick={onPreorderClick}
+          >
             Lizenz sichern
             <ArrowRight className="h-4 w-4" />
-          </CheckoutButton>
+          </button>
         </div>
       </div>
-      <div className="relative mx-auto flex min-h-[696px] max-w-7xl flex-col px-5 pb-6 sm:px-6 lg:px-8">
-        <div className="flex flex-1 items-center py-16 lg:py-20">
+      <div className="relative mx-auto flex min-h-[604px] max-w-7xl flex-col px-5 pb-6 sm:px-6 lg:px-8">
+        <div className="flex flex-1 items-center py-12 lg:py-14">
           <div className="max-w-4xl">
-            <p className="eyebrow text-[#A0F5E8]">Lokale Produktivitäts-App</p>
+            <p className="eyebrow text-[#A0F5E8]">Browserbasierte Produktivitäts-App</p>
             <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.08] px-4 py-2 text-sm text-white/76 backdrop-blur">
               <Sparkles className="h-4 w-4 text-[#A0F5E8]" />
-              Lokale Produktivitäts-App für wiederverwendbare Bausteine
+              Wiederverwendbare Prompts, Snippets und Workflows an einem Ort
             </p>
             <h2 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-white sm:text-6xl lg:text-7xl">
               SMART SnippetFlow
             </h2>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
               Sammle Prompts, Code-Snippets, KI-Workflows und Notizen strukturiert
-              an einem lokalen Ort. Auffindbar, klar geordnet und schnell bereit
+              in deinem eigenen Arbeitsbereich. Auffindbar, klar geordnet und schnell bereit
               für den nächsten Einsatz.
             </p>
-            <div className="mt-9 grid w-full max-w-[460px] grid-cols-1 gap-3 sm:grid-cols-2">
-              <CheckoutButton className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb]">
+            <div className="mt-9 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb]"
+                onClick={onPreorderClick}
+              >
                 Jetzt kaufen
                 <ArrowRight className="h-4 w-4" />
-              </CheckoutButton>
+              </button>
               <a className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/[0.06] px-5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12]" href="#features">
-                Ablauf ansehen
-                <Play className="h-4 w-4" />
+                Funktionen ansehen
+                <ArrowRight className="h-4 w-4" />
               </a>
             </div>
             <div className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
               {[
-                ["Lokal", "Daten bleiben auf deinem Rechner"],
-                ["Strukturiert", "Prompts, Code und Notizen sortieren"],
+                ["Eigenes Konto", "Getrennte Daten pro Nutzer"],
+                ["Strukturiert", "Prompts, Code, Workflows und Notizen sortieren"],
                 ["Wiederverwendbar", "Bausteine schneller finden"],
               ].map(([title, text]) => (
-                <div className="rounded-xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur" key={title}>
-                  <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                <div className="rounded-xl border border-white/10 bg-white/[0.07] p-4 text-center backdrop-blur" key={title}>
+                  <div className="flex items-center justify-center gap-2 text-sm font-semibold text-white">
                     <Check className="h-4 w-4 text-[#A0F5E8]" />
                     {title}
                   </div>
@@ -323,110 +281,6 @@ function HeroVariant() {
   );
 }
 
-function TrustItem({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-2 rounded-lg border border-ink/10 bg-white/45 px-3 py-2">
-      <Check className="h-4 w-4 text-sage" />
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function AppMockup() {
-  return (
-    <div className="relative mx-auto w-full max-w-3xl">
-      <div className="overflow-hidden rounded-[22px] border border-ink/10 bg-[#1f211f] shadow-soft">
-        <div className="flex items-center justify-between border-b border-white/10 bg-[#2b2d2a] px-5 py-4">
-          <div className="flex gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#d8705a]" />
-            <span className="h-3 w-3 rounded-full bg-[#d8ad61]" />
-            <span className="h-3 w-3 rounded-full bg-[#78a87b]" />
-          </div>
-          <div className="text-xs text-white/48">SMART SnippetFlow</div>
-        </div>
-        <div className="grid min-h-[480px] grid-cols-[150px_1fr] bg-[#f7f4ef] sm:grid-cols-[210px_1fr]">
-          <aside className="border-r border-ink/10 bg-[#ece7dc] p-4">
-            <div className="mb-5 flex items-center gap-3">
-              <img src={logoUrl} alt="" className="h-8 w-8 rounded-lg shadow-sm" />
-              <div className="min-w-0">
-                <div className="truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-graphite/60">
-                  SMART
-                </div>
-                <div className="truncate text-sm font-semibold text-ink">SnippetFlow</div>
-                <div className="truncate text-xs text-graphite/60">Lokale Wissensbasis</div>
-              </div>
-            </div>
-            <div className="space-y-1">
-              {[
-                ["Bibliothek", Library],
-                ["Prompts", NotebookText],
-                ["Code", Code2],
-                ["Workflows", Workflow],
-                ["Notizen", NotebookText],
-                ["Favoriten", Star],
-                ["Einstellungen", Settings],
-                ["Hilfe", HelpCircle],
-              ].map(([item, Icon], index) => {
-                const MenuIcon = Icon as typeof Library;
-
-                return (
-                  <div
-                    className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm ${
-                      index === 0 ? "bg-white/72 text-ink shadow-sm" : "text-graphite/70"
-                    }`}
-                    key={item as string}
-                  >
-                    <MenuIcon className="h-4 w-4 shrink-0" />
-                    <span className="truncate">{item as string}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </aside>
-          <section className="p-4 sm:p-6">
-            <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <div className="text-xs uppercase text-graphite/45">Bibliothek</div>
-                <h2 className="mt-1 text-2xl font-semibold">Wiederverwendbare Bausteine</h2>
-              </div>
-              <div className="rounded-full bg-sage/10 px-3 py-1 text-sm text-sage">Favorit</div>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {["Landingpage Copy", "React Component", "FAQ Rewrite", "Abfrage Beispiel"].map((title, index) => (
-                <article className="rounded-xl border border-ink/10 bg-white p-4 shadow-sm" key={title}>
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="text-sm font-medium">{title}</span>
-                    <span className="rounded-full bg-mist px-2 py-1 text-xs text-graphite/60">
-                      {index % 2 === 0 ? "Prompt" : "Code"}
-                    </span>
-                  </div>
-                  <div className="space-y-2">
-                    <span className="block h-2 rounded-full bg-ink/10" />
-                    <span className="block h-2 w-11/12 rounded-full bg-ink/10" />
-                    <span className="block h-2 w-8/12 rounded-full bg-ink/10" />
-                  </div>
-                </article>
-              ))}
-            </div>
-            <div className="mt-5 rounded-xl border border-ink/10 bg-[#20231f] p-4 text-sm text-white shadow-glow">
-              <div className="mb-3 flex items-center justify-between text-white/60">
-                <span>Vorschau</span>
-                <span>Notiz</span>
-              </div>
-              <div className="rounded-lg bg-white/10 p-4 leading-7 text-white/80">
-                # Kampagnenstruktur<br />
-                - Zielgruppe definieren<br />
-                - Prompt mit Kontext speichern<br />
-                - Ergebnis als Vorlage markieren
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Problem() {
   return (
     <section className="section">
@@ -438,14 +292,13 @@ function Problem() {
         <div className="grid gap-4 text-lg leading-8 text-graphite/75">
           <p>
             Wer regelmäßig mit KI, Code und wiederkehrenden Arbeitsabläufen
-            arbeitet, produziert wertvolle kleine Bausteine. Ohne Struktur
-            verschwinden sie in Chats, Notizen, Dateien oder Browser-Tabs.
-            Dabei sind Prompts, Code, Workflows und Notizen echtes
-            Arbeitskapital.
+            arbeitet, erstellt wertvolle Bausteine für den nächsten Einsatz.
+            Ohne Struktur verschwinden sie schnell in Chats, Notizen, Dateien
+            oder Browser-Tabs.
           </p>
           <p>
             SMART SnippetFlow bringt diese Bausteine an einen ruhigen Ort:
-            auffindbar, kategorisiert, lokal gespeichert und bereit für den
+            auffindbar, kategorisiert, im eigenen Konto gespeichert und bereit für den
             nächsten Einsatz.
           </p>
         </div>
@@ -460,7 +313,7 @@ function FeatureGrid() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="eyebrow">Funktionen</p>
-          <h2 className="section-title">Alles, was eine fokussierte Wissensbasis für wiederverwendbare Bausteine braucht.</h2>
+          <h2 className="section-title">Alles, was eine fokussierte Wissensbibliothek für wiederverwendbare Inhalte braucht.</h2>
         </div>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => {
@@ -484,20 +337,24 @@ function LocalStorage() {
     <section id="local" className="section">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div>
-          <p className="eyebrow">Lokale Datenspeicherung</p>
-          <h2 className="section-title">Deine Bibliothek bleibt auf deinem Rechner.</h2>
+          <p className="eyebrow">Eigener Arbeitsbereich</p>
+          <h2 className="section-title">
+            Deine Bibliothek
+            <br />
+            bleibt bei dir.
+          </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-graphite/75">
-            SMART SnippetFlow speichert deine Bibliothek lokal auf deinem
-            Rechner. Es gibt keine automatische Cloud-Ablage, keine
-            Teamverwaltung und kein unnötig komplexes Online-System im
-            Hintergrund.
+            SMART SnippetFlow speichert deine Prompts, Code-Snippets,
+            Workflows und Notizen in deinem eigenen Nutzerkonto. Andere Nutzer
+            können nicht auf deine Inhalte zugreifen. Die App bleibt bewusst
+            schlank und konzentriert sich auf deine persönliche Arbeitsbibliothek.
           </p>
         </div>
         <div className="grid gap-4">
           {[
-            ["Lokal gespeichert", "Deine Bibliothek bleibt direkt auf deinem Rechner."],
-            ["Keine Cloud", "Keine automatische Übertragung deiner Inhalte."],
-            ["Bewusst schlank", "Ein Werkzeug für Einzelpersonen und private Anwender."],
+            ["Eigenes Nutzerkonto", "Jeder Nutzer arbeitet mit getrennten Daten und eigener Bibliothek."],
+            ["Browserbasiert", "Nutzbar auf Windows, macOS und anderen modernen Systemen."],
+            ["Bewusst schlank", "Ein fokussiertes Werkzeug für Einzelanwender und persönliche Arbeitsabläufe."],
           ].map(([title, text]) => (
             <div className="rounded-xl border border-ink/10 bg-white/60 p-5 shadow-sm" key={title}>
               <div className="flex items-center gap-3">
@@ -513,7 +370,7 @@ function LocalStorage() {
   );
 }
 
-function License() {
+function License({ onPreorderClick }: { onPreorderClick: () => void }) {
   return (
     <section id="license" className="bg-[#0b0b10] py-24 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -525,33 +382,33 @@ function License() {
             </h2>
             <p className="mt-8 max-w-2xl text-base leading-[1.65] text-white/78">
               Eine strukturierte Arbeitsumgebung hilft dabei, wiederkehrende Aufgaben, Vorlagen und produktive
-              Arbeitsbausteine verlässlich zu organisieren. Lokale Nutzung, klare Datenkontrolle und professionelle
+              Arbeitsbausteine verlässlich zu organisieren. Persönliche Arbeitsbereiche, klare Datenzuordnung und professionelle
               KI-Unterstützung schaffen die Grundlage für konzentriertes Arbeiten.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-[1.65] text-white/64">
-              Mit der Jahreslizenz entsteht eine langfristig nutzbare Wissensbasis, die Prozesse beschleunigt,
+              Mit der Jahreslizenz entsteht eine langfristig nutzbare Wissensbibliothek, die Prozesse beschleunigt,
               Ergebnisse konsistenter macht und den professionellen Arbeitsalltag dauerhaft entlastet.
             </p>
           </div>
-          <PremiumFramedPriceCard />
+          <PremiumFramedPriceCard onPreorderClick={onPreorderClick} />
         </div>
       </div>
     </section>
   );
 }
 
-function PremiumFramedPriceCard() {
+function PremiumFramedPriceCard({ onPreorderClick }: { onPreorderClick: () => void }) {
   return (
     <div className="rounded-2xl border border-white bg-white/[0.09] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:p-12">
       <div className="flex items-start justify-between gap-6">
         <div>
-          <h3 className="text-xl font-semibold text-white">Professional Jahreslizenz</h3>
+          <h3 className="text-xl font-semibold text-white">Professionelle Jahreslizenz</h3>
           <div className="mt-6 flex flex-wrap items-end gap-x-4 gap-y-2">
-            <span className="text-[56px] font-bold leading-none tracking-normal text-white">599 €</span>
+            <span className="text-[56px] font-bold leading-none tracking-normal text-white">179 €</span>
             <span className="pb-2 text-base text-white/60">pro Jahr</span>
           </div>
           <p className="mt-3 text-[13px] leading-6 text-white/54">
-            zzgl. 19 % MwSt. · entspricht 49,92 € netto pro Monat
+            zzgl. 19 % MwSt. · entspricht 14,92 € netto pro Monat
           </p>
         </div>
         <BadgeCheck className="h-14 w-14 shrink-0 text-[#A0F5E8]" />
@@ -564,57 +421,67 @@ function PremiumFramedPriceCard() {
           </li>
         ))}
       </ul>
-      <CheckoutButton className="mt-10 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[10px] bg-gradient-to-r from-[#A0F5E8] to-[#7DD3C0] px-6 text-base font-semibold text-[#09100f] transition duration-200 hover:scale-[1.02] hover:brightness-110">
+      <button
+        type="button"
+        className="mt-10 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[10px] bg-gradient-to-r from-[#A0F5E8] to-[#7DD3C0] px-6 text-base font-semibold text-[#09100f] transition duration-200 hover:scale-[1.02] hover:brightness-110"
+        onClick={onPreorderClick}
+      >
         Lizenz sichern
         <ArrowRight className="h-4 w-4" />
-      </CheckoutButton>
+      </button>
     </div>
   );
 }
 
-function CheckoutButton({ children, className }: { children: React.ReactNode; className: string }) {
-  const [state, setState] = React.useState<"idle" | "loading" | "error">("idle");
-
-  async function handleCheckout() {
-    if (!checkoutFunctionUrl) {
-      if (fallbackPaymentLink) {
-        window.location.href = fallbackPaymentLink;
-        return;
-      }
-
-      setState("error");
-      return;
-    }
-
-    setState("loading");
-
-    try {
-      const response = await fetch(checkoutFunctionUrl, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          successUrl: `${window.location.origin}${window.location.pathname}?checkout=success&session_id={CHECKOUT_SESSION_ID}`,
-          cancelUrl: `${window.location.origin}${window.location.pathname}#license`,
-        }),
-      });
-      const payload = (await response.json()) as { url?: string; error?: string };
-
-      if (!response.ok || !payload.url) {
-        throw new Error(payload.error ?? "Checkout konnte nicht gestartet werden.");
-      }
-
-      window.location.href = payload.url;
-    } catch {
-      setState("error");
-    }
+function PreorderDialog({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) {
+    return null;
   }
 
   return (
-    <button type="button" className={className} onClick={() => void handleCheckout()} disabled={state === "loading"}>
-      {state === "loading" ? "Checkout wird geöffnet..." : state === "error" ? "Checkout nicht konfiguriert" : children}
-    </button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/55 px-5 py-8 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="preorder-title">
+      <button type="button" className="absolute inset-0 cursor-default" aria-label="Hinweisfenster schließen" onClick={onClose} />
+      <div className="relative w-full max-w-xl rounded-2xl border border-ink/10 bg-[#f8f6f1] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:p-9">
+        <button
+          type="button"
+          className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 bg-white/70 text-graphite transition hover:bg-white hover:text-ink"
+          aria-label="Hinweisfenster schließen"
+          onClick={onClose}
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <p className="eyebrow">Vorbestellung</p>
+        <h2 id="preorder-title" className="mt-4 pr-8 text-3xl font-semibold leading-tight tracking-normal text-ink">
+          SMART SnippetFlow ist in Vorbereitung.
+        </h2>
+        <div className="mt-5 grid gap-4 text-base leading-7 text-graphite/74">
+          <p>
+            Der Kaufbereich wird derzeit vorbereitet. Bei Interesse kannst du
+            eine Vorbestellung vormerken lassen.
+          </p>
+          <p>
+            Sobald Trial, Zahlung und Lizenzfreischaltung aktiv sind, führt der
+            Kaufbutton direkt zur sicheren Online-Bestellung.
+          </p>
+        </div>
+        <div className="mt-7 grid gap-3 sm:grid-cols-[1fr_auto]">
+          <a
+            href="mailto:info@built-smart-hub.com?subject=Vorbestellung%20SMART%20SnippetFlow"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-ink px-6 text-sm font-semibold text-white transition hover:bg-ink/88"
+          >
+            Vorbestellung anfragen
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-12 items-center justify-center rounded-xl border border-ink/12 bg-white/60 px-6 text-sm font-semibold text-ink transition hover:bg-white"
+            onClick={onClose}
+          >
+            Schließen
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -623,7 +490,7 @@ function Audience() {
     <section className="section">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <p className="eyebrow">Zielgruppe</p>
-        <h2 className="section-title max-w-4xl">Gebaut für Menschen, die ihre besten Bausteine wiederverwenden.</h2>
+        <h2 className="section-title max-w-4xl">Gebaut für Menschen, die Wissen, Prompts und Arbeitsbausteine wiederverwenden.</h2>
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {audiences.map((audience) => (
             <div className="flex items-center gap-3 rounded-xl border border-ink/10 bg-white/60 p-4" key={audience}>
@@ -667,7 +534,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
         <FooterVariant
           appName="SMART SnippetFlow"
-          slogan="Lokale Wissensbasis für Prompts, Code, Workflows und Notizen"
+          slogan="Persönliche Wissensbibliothek für Prompts, Code, Workflows und Notizen"
         />
       </div>
     </footer>
@@ -686,7 +553,7 @@ function FooterVariant({ appName, slogan }: { appName: string; slogan: string })
           </div>
         </div>
         <div className="text-sm text-graphite/68 md:text-right">
-          <div>© 2026 SmartBuilt-AI · Powered by BuiltSmart Hub</div>
+          <div>© 2026 SmartBuilt-AI · powered by BuiltSmart Hub - Bernhard Metzger</div>
           <nav className="mt-2 flex flex-wrap justify-center gap-x-2 gap-y-1 md:justify-end">
             {legalLinks.map((link, index) => (
               <span className="inline-flex items-center gap-2" key={link.href}>
@@ -704,7 +571,7 @@ function FooterVariant({ appName, slogan }: { appName: string; slogan: string })
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>,
+  </StrictMode>,
 );
