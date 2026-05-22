@@ -34,18 +34,6 @@ const legalLinks = [
   { label: "Widerrufsbelehrung", href: "https://www.built-smart-hub.com/widerrufsbelehrung" },
 ];
 
-const premiumLicenseFeatures = [
-  "12 Monate Nutzung für professionelle Einzelanwender",
-  "Nutzung der App im Webbrowser",
-  "Professionelle Arbeitsumgebung mit persönlicher Wissensbibliothek",
-  "KI-gestützte Unterstützung innerhalb der App",
-  "Export und Import eigener Arbeitsdaten",
-  "KI-Nutzung mit eigenem Anthropic API-Key",
-  "Automatische Verlängerung um weitere 12 Monate",
-  "Kündigungsfrist 1 Monat vor Ablauf",
-  "Sichere Online-Zahlung",
-];
-
 const features = [
   {
     icon: Library,
@@ -120,39 +108,19 @@ const audiences = [
 
 const faqs = [
   {
-    question: "Läuft die App lokal?",
+    question: "Wie wird die App geöffnet?",
     answer:
-      "SMART SnippetFlow läuft direkt im Webbrowser und kann über einen Link geöffnet werden. Eine Installation ist nicht erforderlich.",
+      "SMART SnippetFlow läuft browserbasiert und kann über einen Link im Webbrowser geöffnet werden. Eine separate Desktop-Installation ist nicht erforderlich.",
   },
   {
-    question: "Werden meine Inhalte in der Cloud gespeichert?",
+    question: "Werden Daten in der Cloud gespeichert?",
     answer:
-      "Nein. Deine Inhalte werden lokal im Browser gespeichert. Über JSON Export und Import kannst du sie sichern oder auf ein anderes Gerät übertragen.",
+      "Deine Inhalte können lokal im Browser gespeichert werden. Sie werden nicht automatisch in einer Cloud-Datenbank abgelegt oder zwischen Nutzern geteilt.",
   },
   {
     question: "Gibt es eine Windows- und macOS-Version?",
     answer:
-      "SMART SnippetFlow ist browserbasiert und kann auf Windows, macOS und anderen modernen Systemen genutzt werden.",
-  },
-  {
-    question: "Brauche ich ein Nutzerkonto?",
-    answer:
-      "Für Trial, Kauf und Lizenzprüfung kann ein Nutzerkonto bzw. Login per E-Mail/Magic Link erforderlich sein. Deine Inhalte werden dadurch nicht automatisch in der Cloud gespeichert.",
-  },
-  {
-    question: "Können andere Nutzer auf meine Daten zugreifen?",
-    answer:
-      "Nein. Deine Inhalte liegen lokal in deinem Browser. Andere Nutzer haben keinen Zugriff darauf.",
-  },
-  {
-    question: "Kann ich Daten exportieren?",
-    answer:
-      "Ja. Du kannst deine Bibliothek als JSON exportieren und später wieder importieren.",
-  },
-  {
-    question: "Gibt es eine kostenlose Testphase?",
-    answer:
-      "Ja. Du kannst die App 7 Tage kostenlos mit vollem Funktionsumfang testen.",
+      "Die App kann über den Browser auf Windows, macOS und anderen modernen Systemen genutzt werden.",
   },
   {
     question: "Wie funktioniert die Lizenz?",
@@ -160,19 +128,34 @@ const faqs = [
       "Du erhältst eine Jahreslizenz für 12 Monate. Sie verlängert sich automatisch um weitere 12 Monate, wenn sie nicht spätestens 1 Monat vor Ablauf gekündigt wird.",
   },
   {
-    question: "Kann ich mehrere Lizenzen kaufen?",
+    question: "Gibt es eine kostenlose Testphase?",
     answer:
-      "Ja. Du kannst mehrere Lizenzen derselben App kaufen, zum Beispiel 5 Lizenzen für 5 getrennte Nutzer.",
+      "Ja. Du kannst SMART SnippetFlow 3 Tage kostenlos mit vollem Funktionsumfang testen.",
   },
   {
-    question: "Kann ich mehrere Apps zusammen kaufen?",
+    question: "Brauche ich ein Nutzerkonto?",
     answer:
-      "In der ersten Version wird pro Checkout eine App gekauft. Mehrere unterschiedliche Apps in einem gemeinsamen Checkout sind für später vorgesehen.",
+      "Ja. Für Testphase, Kauf und Lizenzprüfung wird ein Nutzerkonto benötigt. Deine Inhalte können trotzdem lokal im Browser gespeichert bleiben.",
+  },
+  {
+    question: "Kann ich Daten exportieren?",
+    answer:
+      "Ja. Du kannst deine Bibliothek als JSON exportieren und später wieder importieren, zum Beispiel zur Sicherung oder zur Übertragung auf ein anderes Gerät.",
+  },
+  {
+    question: "Welche Inhalte kann ich verwalten?",
+    answer:
+      "Du kannst Prompts, Code-Snippets, Workflows, Notizen, Kategorien, Tags und Favoriten strukturiert verwalten.",
   },
   {
     question: "Gibt es KI-Funktionen?",
     answer:
-      "Ja. Die App kann dich bei Titeln, Kurzbeschreibungen und ergänzenden Hinweisen unterstützen. KI-Funktionen können optional mit eigenem API-Key genutzt werden.",
+      "Ja. Die App kann dich beim Ausfüllen von Titeln, Beschreibungen, Kategorien, Tags und Prompt-Varianten unterstützen. Für KI-Funktionen ist ein eigener API-Key erforderlich.",
+  },
+  {
+    question: "Warum brauche ich einen Anthropic API-Key?",
+    answer:
+      "Die KI-Funktionen können über die Anthropic API ausgeführt werden. Dafür wird ein eigener Anthropic API-Key benötigt. Ein normales Claude-Abo reicht dafür nicht aus, auch wenn du bereits Claude Pro oder ein anderes Claude-Abo nutzt. Bei der API-Nutzung fallen geringe zusätzliche Kosten an, abhängig vom Umfang deiner Inhalte und der Anthropic-Abrechnung. Nach Anthropic-Angaben werden API-Daten nicht ohne ausdrückliche Zustimmung zum Training der Modelle verwendet.",
   },
 ];
 
@@ -185,8 +168,8 @@ function App() {
       <Problem />
       <FeatureGrid />
       <LocalStorage />
-      <License onPreorderClick={() => setIsPreorderOpen(true)} />
       <Audience />
+      <License onPreorderClick={() => setIsPreorderOpen(true)} />
       <FAQ />
       <Footer />
       <PreorderDialog isOpen={isPreorderOpen} onClose={() => setIsPreorderOpen(false)} />
@@ -213,9 +196,10 @@ function HeroVariant({ onPreorderClick }: { onPreorderClick: () => void }) {
             <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
             <span>SMART SnippetFlow</span>
           </a>
-          <nav className="hidden items-center gap-7 text-sm text-graphite/70 md:flex">
+          <nav className="hidden items-center gap-6 text-sm text-graphite/70 md:flex">
             <a href="#features" className="hover:text-ink">Funktionen</a>
-            <a href="#local" className="hover:text-ink">Konto</a>
+            <a href="#local" className="hover:text-ink">Arbeitsbereich</a>
+            <a href="#audience" className="hover:text-ink">Zielgruppe</a>
             <a href="#license" className="hover:text-ink">Lizenz</a>
             <a href="#faq" className="hover:text-ink">FAQ</a>
           </nav>
@@ -283,7 +267,7 @@ function HeroVariant({ onPreorderClick }: { onPreorderClick: () => void }) {
 
 function Problem() {
   return (
-    <section className="section">
+    <section className="section bg-[#f6f3ee]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="eyebrow">Problem und Nutzen</p>
@@ -309,7 +293,7 @@ function Problem() {
 
 function FeatureGrid() {
   return (
-    <section id="features" className="section bg-white/45">
+    <section id="features" className="section border-y border-ink/10 bg-[#fffdf9]">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <p className="eyebrow">Funktionen</p>
@@ -334,7 +318,7 @@ function FeatureGrid() {
 
 function LocalStorage() {
   return (
-    <section id="local" className="section">
+    <section id="local" className="section bg-[#eee8de]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <div>
           <p className="eyebrow">Eigener Arbeitsbereich</p>
@@ -356,7 +340,7 @@ function LocalStorage() {
             ["Browserbasiert", "Nutzbar auf Windows, macOS und anderen modernen Systemen."],
             ["Bewusst schlank", "Ein fokussiertes Werkzeug für Einzelanwender und persönliche Arbeitsabläufe."],
           ].map(([title, text]) => (
-            <div className="rounded-xl border border-ink/10 bg-white/60 p-5 shadow-sm" key={title}>
+            <div className="rounded-xl border border-ink/10 bg-white/78 p-5 shadow-sm" key={title}>
               <div className="flex items-center gap-3">
                 <Lock className="h-5 w-5 text-sage" />
                 <h3 className="font-semibold">{title}</h3>
@@ -399,36 +383,61 @@ function License({ onPreorderClick }: { onPreorderClick: () => void }) {
 
 function PremiumFramedPriceCard({ onPreorderClick }: { onPreorderClick: () => void }) {
   return (
-    <div className="rounded-2xl border border-white bg-white/[0.09] p-8 shadow-[0_8px_32px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:p-12">
+    <div className="rounded-lg border border-white/45 bg-[#26384d]/92 p-8 shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-10">
       <div className="flex items-start justify-between gap-6">
         <div>
-          <h3 className="text-xl font-semibold text-white">Professionelle Jahreslizenz</h3>
-          <div className="mt-6 flex flex-wrap items-end gap-x-4 gap-y-2">
-            <span className="text-[56px] font-bold leading-none tracking-normal text-white">179 €</span>
-            <span className="pb-2 text-base text-white/60">pro Jahr</span>
-          </div>
-          <p className="mt-3 text-[13px] leading-6 text-white/54">
-            zzgl. 19 % MwSt. · entspricht 14,92 € netto pro Monat
-          </p>
+          <p className="text-xs font-bold uppercase tracking-wide text-white/62">Professional</p>
+          <h3 className="mt-2 text-3xl font-bold leading-tight text-white sm:text-4xl">Jahreslizenz</h3>
         </div>
-        <BadgeCheck className="h-14 w-14 shrink-0 text-[#A0F5E8]" />
+        <BadgeCheck className="mt-2 h-14 w-14 shrink-0 text-[#A0F5E8] sm:h-16 sm:w-16" />
       </div>
-      <ul className="mt-8 space-y-4">
-        {premiumLicenseFeatures.map((item) => (
-          <li className="flex gap-3 text-[15px] leading-[1.5] text-white/85" key={item}>
-            <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#A0F5E8]" />
-            <span className="xl:whitespace-nowrap">{item}</span>
-          </li>
+      <div className="mt-7 flex flex-wrap items-end gap-x-5 gap-y-2">
+        <span className="text-[82px] font-bold leading-none tracking-normal text-white sm:text-[92px]">179 €</span>
+        <span className="pb-4 text-base font-semibold text-white/88">pro Jahr zzgl. 19% MwSt.</span>
+      </div>
+      <p className="mt-4 text-sm font-semibold leading-6 text-white/78">213,01 € inkl. MwSt.</p>
+      <p className="text-sm font-semibold leading-6 text-white/78">
+        Entspricht 14,92 € netto / 17,75 € brutto pro Monat
+      </p>
+      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+        {["12 Monate Laufzeit", "3 Tage testen", "1 Nutzerzugriff"].map((item) => (
+          <div
+            className="rounded-full border border-white/20 bg-white/12 px-4 py-2 text-center text-sm font-bold leading-none text-white shadow-inner"
+            key={item}
+          >
+            {item}
+          </div>
         ))}
-      </ul>
+      </div>
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        {[
+          ["Verlängerung", "Automatisch um 12 Monate"],
+          ["Kündigung", "1 Monat vor Ablauf"],
+          ["Zahlung", "Sichere Online-Zahlung"],
+        ].map(([title, text]) => (
+          <div className="rounded-lg border border-white/14 bg-[#1f3147]/68 p-4 text-center" key={title}>
+            <p className="text-xs font-bold uppercase tracking-wide text-[#A0F5E8]">{title}</p>
+            <p className="mt-2 text-base font-semibold leading-6 text-white/90">{text}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-5 rounded-lg border border-[#A0F5E8]/18 bg-[#315268]/45 p-5 text-center">
+        <p className="text-xs font-bold uppercase tracking-wide text-[#A0F5E8]">KI-Nutzung</p>
+        <p className="mt-2 text-base font-semibold leading-6 text-white/92">
+          Eigener Anthropic API-Key erforderlich
+        </p>
+      </div>
       <button
         type="button"
-        className="mt-10 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-[10px] bg-gradient-to-r from-[#A0F5E8] to-[#7DD3C0] px-6 text-base font-semibold text-[#09100f] transition duration-200 hover:scale-[1.02] hover:brightness-110"
+        className="mt-7 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-bold text-[#142135] shadow-[0_18px_36px_rgba(4,12,24,0.24)] transition duration-200 hover:scale-[1.01] hover:bg-[#f4f1eb]"
         onClick={onPreorderClick}
       >
         Lizenz sichern
         <ArrowRight className="h-4 w-4" />
       </button>
+      <p className="mt-5 text-center text-sm font-semibold text-white/58">
+        Jahreslizenz | sichere Zahlung | persönlicher Nutzerzugriff
+      </p>
     </div>
   );
 }
@@ -487,13 +496,13 @@ function PreorderDialog({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
 
 function Audience() {
   return (
-    <section className="section">
+    <section id="audience" className="section border-t border-ink/10 bg-[#fffaf3]">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <p className="eyebrow">Zielgruppe</p>
         <h2 className="section-title max-w-4xl">Gebaut für Menschen, die Wissen, Prompts und Arbeitsbausteine wiederverwenden.</h2>
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {audiences.map((audience) => (
-            <div className="flex items-center gap-3 rounded-xl border border-ink/10 bg-white/60 p-4" key={audience}>
+            <div className="flex items-center gap-3 rounded-xl border border-ink/10 bg-white/78 p-4 shadow-sm" key={audience}>
               <Users className="h-5 w-5 text-clay" />
               <span className="font-medium">{audience}</span>
             </div>
@@ -506,11 +515,11 @@ function Audience() {
 
 function FAQ() {
   return (
-    <section id="faq" className="section bg-white/45">
+    <section id="faq" className="section border-t border-ink/10 bg-[#eee8de]">
       <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-8">
         <p className="eyebrow">FAQ</p>
         <h2 className="section-title">Kurz beantwortet.</h2>
-        <div className="mt-10 divide-y divide-ink/10 rounded-2xl border border-ink/10 bg-white/70">
+        <div className="mt-10 divide-y divide-ink/10 rounded-2xl border border-ink/10 bg-white/[0.82] shadow-sm">
           {faqs.map((item) => (
             <details className="group p-5 sm:p-6" key={item.question}>
               <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold">
