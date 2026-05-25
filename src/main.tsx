@@ -1,4 +1,4 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import {
   ArrowRight,
@@ -20,10 +20,10 @@ import {
   Tags,
   Users,
   Workflow,
-  X,
 } from "lucide-react";
 import "./styles.css";
 
+const purchaseLink = "https://bm1964-25.github.io/Landing-Tafel-Kontakt/";
 const logoUrl = `${import.meta.env.BASE_URL}app-logo.png`;
 const heroScreenshotUrl = `${import.meta.env.BASE_URL}hero-app-screenshot.png`;
 
@@ -110,74 +110,71 @@ const faqs = [
   {
     question: "Wie wird die App geöffnet?",
     answer:
-      "SMART SnippetFlow läuft browserbasiert und kann über einen Link im Webbrowser geöffnet werden. Eine separate Desktop-Installation ist nicht erforderlich.",
+      "Die App wird nach dem Download über den mitgelieferten Starter geöffnet. Sie läuft lokal auf deinem Gerät und wird anschließend im Browser angezeigt.",
   },
   {
     question: "Werden Daten in der Cloud gespeichert?",
     answer:
-      "Deine Inhalte können lokal im Browser gespeichert werden. Sie werden nicht automatisch in einer Cloud-Datenbank abgelegt oder zwischen Nutzern geteilt.",
+      "Nein. Deine Inhalte werden lokal auf deinem Gerät bzw. im lokalen Browser-Speicher gespeichert. Es gibt keine automatische zentrale Cloud-Datenbank und keine automatische Synchronisierung zwischen Nutzern.",
   },
   {
     question: "Gibt es eine Windows- und macOS-Version?",
     answer:
-      "Die App kann über den Browser auf Windows, macOS und anderen modernen Systemen genutzt werden.",
+      "Ja. Die App kann auf Windows und macOS lokal im Browser genutzt werden. Dafür gibt es passende Starter für das jeweilige System.",
   },
   {
     question: "Wie funktioniert die Lizenz?",
     answer:
-      "Du erhältst eine Jahreslizenz für 12 Monate. Sie verlängert sich automatisch um weitere 12 Monate, wenn sie nicht spätestens 1 Monat vor Ablauf gekündigt wird.",
+      "Du erhältst eine Jahreslizenz für 12 Monate. Sie verlängert sich automatisch um weitere 12 Monate, sofern sie nicht spätestens 1 Monat vor Ablauf gekündigt wird.",
   },
   {
     question: "Gibt es eine kostenlose Testphase?",
     answer:
-      "Ja. Du kannst SMART SnippetFlow 3 Tage kostenlos mit vollem Funktionsumfang testen.",
+      "Ja, sofern dieses Modell aktiviert ist. Die App kann dann für einen begrenzten Zeitraum mit vollem Funktionsumfang getestet werden.",
   },
   {
     question: "Brauche ich ein Nutzerkonto?",
     answer:
-      "Ja. Für Testphase, Kauf und Lizenzprüfung wird ein Nutzerkonto benötigt. Deine Inhalte können trotzdem lokal im Browser gespeichert bleiben.",
+      "Für Testphase, Kauf und Lizenzprüfung kann ein Nutzerkonto erforderlich sein. Die gespeicherten Inhalte der App bleiben davon getrennt lokal auf deinem Gerät.",
   },
   {
     question: "Kann ich Daten exportieren?",
     answer:
-      "Ja. Du kannst deine Bibliothek als JSON exportieren und später wieder importieren, zum Beispiel zur Sicherung oder zur Übertragung auf ein anderes Gerät.",
+      "Ja. Du kannst deine Bibliothek als JSON exportieren und später wieder importieren, z. B. zur Sicherung oder zur Übertragung auf ein anderes Gerät.",
   },
   {
     question: "Welche Inhalte kann ich verwalten?",
     answer:
-      "Du kannst Prompts, Code-Snippets, Workflows, Notizen, Kategorien, Tags und Favoriten strukturiert verwalten.",
+      "Du kannst Prompts, Code-Snippets, einfache Workflows, Notizen, Kategorien, Tags und Favoriten strukturiert verwalten.",
   },
   {
     question: "Gibt es KI-Funktionen?",
     answer:
-      "Ja. Die App kann dich beim Ausfüllen von Titeln, Beschreibungen, Kategorien, Tags und Prompt-Varianten unterstützen. Für KI-Funktionen ist ein eigener API-Key erforderlich.",
+      "Ja. Die App kann beim Erstellen von Titeln, Beschreibungen, Kategorien, Tags und Prompt-Varianten unterstützen. Für KI-Funktionen wird ein eigener API-Key benötigt.",
   },
   {
     question: "Warum brauche ich einen Anthropic API-Key?",
     answer:
-      "Die KI-Funktionen können über die Anthropic API ausgeführt werden. Dafür wird ein eigener Anthropic API-Key benötigt. Ein normales Claude-Abo reicht dafür nicht aus, auch wenn du bereits Claude Pro oder ein anderes Claude-Abo nutzt. Bei der API-Nutzung fallen geringe zusätzliche Kosten an, abhängig vom Umfang deiner Inhalte und der Anthropic-Abrechnung. Nach Anthropic-Angaben werden API-Daten nicht ohne ausdrückliche Zustimmung zum Training der Modelle verwendet.",
+      "Die KI-Funktionen laufen über die Anthropic API. Dafür wird ein eigener Anthropic API-Key benötigt. Ein normales Claude-Abo, z. B. Claude Pro, ist dafür nicht ausreichend. Für API-Nutzung können zusätzliche Kosten nach Anthropic-Abrechnung entstehen. Inhalte werden nur für die jeweilige KI-Anfrage an den Anbieter übertragen.",
   },
 ];
 
 function App() {
-  const [isPreorderOpen, setIsPreorderOpen] = useState(false);
-
   return (
     <main className="min-h-screen bg-paper text-ink">
-      <HeroVariant onPreorderClick={() => setIsPreorderOpen(true)} />
+      <HeroVariant />
       <Problem />
       <FeatureGrid />
       <LocalStorage />
       <Audience />
-      <License onPreorderClick={() => setIsPreorderOpen(true)} />
+      <License />
       <FAQ />
       <Footer />
-      <PreorderDialog isOpen={isPreorderOpen} onClose={() => setIsPreorderOpen(false)} />
     </main>
   );
 }
 
-function HeroVariant({ onPreorderClick }: { onPreorderClick: () => void }) {
+function HeroVariant() {
   return (
     <section id="top" className="relative min-h-[680px] overflow-hidden border-b border-ink/10 bg-[#09090d] text-white">
       <div className="absolute inset-0">
@@ -203,14 +200,15 @@ function HeroVariant({ onPreorderClick }: { onPreorderClick: () => void }) {
             <a href="#license" className="hover:text-ink">Lizenz</a>
             <a href="#faq" className="hover:text-ink">FAQ</a>
           </nav>
-          <button
-            type="button"
+          <a
+            href={purchaseLink}
             className="hidden h-11 items-center gap-2 rounded-xl bg-ink px-5 text-sm font-semibold text-white transition hover:bg-ink/88 sm:inline-flex"
-            onClick={onPreorderClick}
+            rel="noreferrer"
+            target="_blank"
           >
             Lizenz sichern
             <ArrowRight className="h-4 w-4" />
-          </button>
+          </a>
         </div>
       </div>
       <div className="relative mx-auto flex min-h-[604px] max-w-7xl flex-col px-5 pb-6 sm:px-6 lg:px-8">
@@ -230,14 +228,15 @@ function HeroVariant({ onPreorderClick }: { onPreorderClick: () => void }) {
               für den nächsten Einsatz.
             </p>
             <div className="mt-9 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-2">
-              <button
-                type="button"
+              <a
+                href={purchaseLink}
                 className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-semibold text-ink transition hover:bg-[#f4f1eb]"
-                onClick={onPreorderClick}
+                rel="noreferrer"
+                target="_blank"
               >
                 Jetzt kaufen
                 <ArrowRight className="h-4 w-4" />
-              </button>
+              </a>
               <a className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/[0.06] px-5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/[0.12]" href="#features">
                 Funktionen ansehen
                 <ArrowRight className="h-4 w-4" />
@@ -354,7 +353,7 @@ function LocalStorage() {
   );
 }
 
-function License({ onPreorderClick }: { onPreorderClick: () => void }) {
+function License() {
   return (
     <section id="license" className="bg-[#0b0b10] py-24 text-white sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
@@ -374,14 +373,14 @@ function License({ onPreorderClick }: { onPreorderClick: () => void }) {
               Ergebnisse konsistenter macht und den professionellen Arbeitsalltag dauerhaft entlastet.
             </p>
           </div>
-          <PremiumFramedPriceCard onPreorderClick={onPreorderClick} />
+          <PremiumFramedPriceCard />
         </div>
       </div>
     </section>
   );
 }
 
-function PremiumFramedPriceCard({ onPreorderClick }: { onPreorderClick: () => void }) {
+function PremiumFramedPriceCard() {
   return (
     <div className="rounded-lg border border-white/45 bg-[#26384d]/92 p-8 shadow-[0_24px_70px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:p-10">
       <div className="flex items-start justify-between gap-6">
@@ -427,69 +426,18 @@ function PremiumFramedPriceCard({ onPreorderClick }: { onPreorderClick: () => vo
           Eigener Anthropic API-Key erforderlich
         </p>
       </div>
-      <button
-        type="button"
+      <a
+        href={purchaseLink}
         className="mt-7 inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-bold text-[#142135] shadow-[0_18px_36px_rgba(4,12,24,0.24)] transition duration-200 hover:scale-[1.01] hover:bg-[#f4f1eb]"
-        onClick={onPreorderClick}
+        rel="noreferrer"
+        target="_blank"
       >
         Lizenz sichern
         <ArrowRight className="h-4 w-4" />
-      </button>
+      </a>
       <p className="mt-5 text-center text-sm font-semibold text-white/58">
         Jahreslizenz | sichere Zahlung | persönlicher Nutzerzugriff
       </p>
-    </div>
-  );
-}
-
-function PreorderDialog({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  if (!isOpen) {
-    return null;
-  }
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/55 px-5 py-8 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="preorder-title">
-      <button type="button" className="absolute inset-0 cursor-default" aria-label="Hinweisfenster schließen" onClick={onClose} />
-      <div className="relative w-full max-w-xl rounded-2xl border border-ink/10 bg-[#f8f6f1] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:p-9">
-        <button
-          type="button"
-          className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 bg-white/70 text-graphite transition hover:bg-white hover:text-ink"
-          aria-label="Hinweisfenster schließen"
-          onClick={onClose}
-        >
-          <X className="h-4 w-4" />
-        </button>
-        <p className="eyebrow">Vorbestellung</p>
-        <h2 id="preorder-title" className="mt-4 pr-8 text-3xl font-semibold leading-tight tracking-normal text-ink">
-          SMART SnippetFlow ist in Vorbereitung.
-        </h2>
-        <div className="mt-5 grid gap-4 text-base leading-7 text-graphite/74">
-          <p>
-            Der Kaufbereich wird derzeit vorbereitet. Bei Interesse kannst du
-            eine Vorbestellung vormerken lassen.
-          </p>
-          <p>
-            Sobald Trial, Zahlung und Lizenzfreischaltung aktiv sind, führt der
-            Kaufbutton direkt zur sicheren Online-Bestellung.
-          </p>
-        </div>
-        <div className="mt-7 grid gap-3 sm:grid-cols-[1fr_auto]">
-          <a
-            href="mailto:info@built-smart-hub.com?subject=Vorbestellung%20SMART%20SnippetFlow"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-ink px-6 text-sm font-semibold text-white transition hover:bg-ink/88"
-          >
-            Vorbestellung anfragen
-            <ArrowRight className="h-4 w-4" />
-          </a>
-          <button
-            type="button"
-            className="inline-flex h-12 items-center justify-center rounded-xl border border-ink/12 bg-white/60 px-6 text-sm font-semibold text-ink transition hover:bg-white"
-            onClick={onClose}
-          >
-            Schließen
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
