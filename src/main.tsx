@@ -412,7 +412,7 @@ function PremiumFramedPriceCard() {
         {[
           ["Verlängerung", "Automatisch um 12 Monate"],
           ["Kündigung", "1 Monat vor Ablauf"],
-          ["Zahlung", "Sichere Online-Zahlung"],
+          ["Zahlung", "Sicherer Online-Zahlungsprozess"],
         ].map(([title, text]) => (
           <div className="rounded-lg border border-white/14 bg-[#1f3147]/68 p-4 text-center" key={title}>
             <p className="text-xs font-bold uppercase tracking-wide text-[#A0F5E8]">{title}</p>
