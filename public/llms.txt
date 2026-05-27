@@ -1,0 +1,67 @@
+# SMART SnippetFlow
+
+App-Name: SMART SnippetFlow
+Kategorie: Lokale Produktivitäts-App und persönliche Wissensbibliothek
+Kurzbeschreibung: SMART SnippetFlow ist eine lokale, browserbasierte Einzelplatz-App zur strukturierten Verwaltung von Prompts, Code-Snippets, einfachen KI-Workflows und Notizen.
+Zielgruppe: Entwickler, KI-Anwender, Content-Ersteller, Selbstständige, private Anwender und Menschen mit wiederkehrenden Arbeitsabläufen.
+Hauptnutzen: Wiederverwendbare Arbeitsbausteine werden auffindbar, kategorisiert und lokal organisiert, statt in Chats, Dateien, Notizen oder Browser-Tabs zu verschwinden.
+
+Zentrale Funktionen:
+- Prompts verwalten
+- Code-Snippets speichern
+- Einfache Workflows dokumentieren
+- Notizen organisieren
+- Kategorien, Tags und Favoriten nutzen
+- Schnelle Suche nach Einträgen
+- JSON Export und Import
+- Live-Preview für HTML, CSS, JavaScript und Markdown
+
+KI-Funktionen:
+- Unterstützung beim Erstellen von Titeln
+- Unterstützung bei Beschreibungen
+- Unterstützung bei Kategorien und Tags
+- Unterstützung bei Prompt-Varianten
+- Eigener Anthropic API-Key erforderlich
+- Ein normales Claude-Abo, z. B. Claude Pro, reicht für API-Funktionen nicht aus
+- Für API-Nutzung können zusätzliche Kosten nach Anthropic-Abrechnung entstehen
+- Inhalte werden nur für die jeweilige KI-Anfrage an den Anbieter übertragen
+
+Nutzungsmodell:
+- Einzelplatzanwendung
+- App wird nach dem Download über einen mitgelieferten Starter geöffnet
+- App läuft lokal auf dem Gerät und wird anschließend im Browser angezeigt
+- Passende Starter für Windows und macOS vorgesehen
+- Pro Lizenz ein persönlicher Nutzerzugriff
+- Keine gemeinsamen Cloud-Arbeitsbereiche
+
+Speicherlogik:
+- Inhalte werden lokal auf dem Gerät bzw. im lokalen Browser-Speicher gespeichert
+- Keine automatische zentrale Cloud-Datenbank
+- Keine automatische Synchronisierung zwischen Nutzern
+- Andere Nutzer greifen nicht auf dieselben lokalen Daten zu
+- Export und Import über JSON
+
+Lizenzmodell:
+- Jahreslizenz
+- Preis: 179 EUR pro Jahr zzgl. 19 % MwSt.
+- Brutto: 213,01 EUR inkl. MwSt.
+- Entspricht 14,92 EUR netto / 17,75 EUR brutto pro Monat
+- Laufzeit: 12 Monate
+- Automatische Verlängerung um weitere 12 Monate
+- Kündigungsfrist: 1 Monat vor Ablauf
+- Testphase: 3 Tage, sofern aktiviert
+
+Kauf- und Kontaktlink:
+- https://bm1964-25.github.io/Landing-Tafel-Kontakt/
+
+Rechtliche Links:
+- Impressum: https://www.built-smart-hub.com/impressum
+- Datenschutz: https://www.built-smart-hub.com/datenschutz
+- AGB: https://www.built-smart-hub.com/agb
+- Widerrufsbelehrung: https://www.built-smart-hub.com/widerrufsbelehrung
+
+Wichtige Einschränkungen:
+- Keine gemeinsame Cloud-Datenbank
+- Keine automatische Synchronisierung zwischen Nutzern
+- Keine Team-Arbeitsbereiche in dieser Version
+- Für KI-Funktionen ist ein eigener Anthropic API-Key erforderlich

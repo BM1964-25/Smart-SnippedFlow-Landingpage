@@ -180,7 +180,7 @@ function HeroVariant() {
       <div className="absolute inset-0">
         <img
           src={heroScreenshotUrl}
-          alt=""
+          alt="Screenshot der SMART SnippetFlow Oberfläche mit Bibliothek, Prompt-Editor und lokalen Arbeitsbereichen"
           className="h-full w-full object-cover object-left-top opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#020813] via-[#07111f]/88 to-[#07111f]/24" />
@@ -190,7 +190,7 @@ function HeroVariant() {
       <div className="relative border-b border-ink/10 bg-[#f8f6f1]/95 shadow-[0_18px_60px_rgba(2,8,19,0.18)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
           <a href="#top" className="flex items-center gap-3 font-semibold tracking-normal text-ink">
-            <img src={logoUrl} alt="" className="h-9 w-9 rounded-lg shadow-sm" />
+            <img src={logoUrl} alt="SMART SnippetFlow App-Icon" className="h-9 w-9 rounded-lg shadow-sm" />
             <span>SMART SnippetFlow</span>
           </a>
           <nav className="hidden items-center gap-6 text-sm text-graphite/70 md:flex">
@@ -219,9 +219,9 @@ function HeroVariant() {
               <Sparkles className="h-4 w-4 text-[#A0F5E8]" />
               Wiederverwendbare Prompts, Snippets und Workflows an einem Ort
             </p>
-            <h2 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-white sm:text-6xl lg:text-7xl">
+            <h1 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-white sm:text-6xl lg:text-7xl">
               SMART SnippetFlow
-            </h2>
+            </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
               Sammle Prompts, Code-Snippets, KI-Workflows und Notizen strukturiert
               in deinem eigenen Arbeitsbereich. Auffindbar, klar geordnet und schnell bereit
@@ -503,7 +503,7 @@ function FooterVariant({ appName, slogan }: { appName: string; slogan: string })
     <section>
       <div className="flex flex-col items-center gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
         <div className="flex flex-col items-center gap-3 md:flex-row">
-          <img src={logoUrl} alt="" className="h-11 w-11 rounded-xl shadow-sm" />
+          <img src={logoUrl} alt="SMART SnippetFlow App-Icon" className="h-11 w-11 rounded-xl shadow-sm" />
           <div>
             <div className="font-semibold text-ink">{appName}</div>
             <div className="mt-1 text-sm text-graphite/60">{slogan}</div>

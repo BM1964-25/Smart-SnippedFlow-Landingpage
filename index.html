@@ -3,12 +3,182 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMART SnippetFlow | Prompts, Code-Snippets, Workflows und Notizen lokal organisieren</title>
     <meta
       name="description"
-      content="SMART SnippetFlow ist eine browserbasierte App zur strukturierten Verwaltung von Prompts, Code-Snippets, KI-Workflows und Notizen."
+      content="SMART SnippetFlow ist eine lokale, browserbasierte Einzelplatz-App zur strukturierten Verwaltung von Prompts, Code-Snippets, Workflows, Notizen, Tags und Favoriten."
     />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/" />
     <link rel="icon" type="image/png" href="%BASE_URL%app-logo.png" />
-    <title>SMART SnippetFlow | Prompt- und Snippet-Bibliothek im Browser</title>
+    <meta property="og:title" content="SMART SnippetFlow | Lokale Bibliothek für Prompts und Snippets" />
+    <meta
+      property="og:description"
+      content="Prompts, Code-Snippets, einfache Workflows und Notizen strukturiert verwalten, lokal speichern, per JSON exportieren und mit optionaler KI-Unterstützung ergänzen."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/" />
+    <meta property="og:image" content="https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/hero-app-screenshot.png" />
+    <meta property="og:site_name" content="SMART SnippetFlow" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SMART SnippetFlow | Lokale Bibliothek für Prompts und Snippets" />
+    <meta
+      name="twitter:description"
+      content="Eine lokale Einzelplatz-App für Prompts, Code-Snippets, Workflows, Notizen, JSON Export/Import und optionale KI-Funktionen mit eigenem Anthropic API-Key."
+    />
+    <meta name="twitter:image" content="https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/hero-app-screenshot.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.built-smart-hub.com/#organization",
+            "name": "SmartBuilt-AI",
+            "url": "https://www.built-smart-hub.com/",
+            "sameAs": ["https://www.built-smart-hub.com/"]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/#software",
+            "name": "SMART SnippetFlow",
+            "applicationCategory": "ProductivityApplication",
+            "operatingSystem": "Windows, macOS",
+            "url": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/",
+            "image": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/hero-app-screenshot.png",
+            "description": "SMART SnippetFlow ist eine lokale, browserbasierte Einzelplatz-App zur strukturierten Verwaltung von Prompts, Code-Snippets, einfachen Workflows, Notizen, Kategorien, Tags und Favoriten.",
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Entwickler, KI-Anwender, Content-Ersteller, Selbstständige, private Anwender und Anwender mit wiederkehrenden Arbeitsabläufen"
+            },
+            "featureList": [
+              "Prompts verwalten",
+              "Code-Snippets speichern",
+              "Einfache Workflows dokumentieren",
+              "Notizen organisieren",
+              "Tags und Kategorien nutzen",
+              "Favoriten markieren",
+              "JSON Export und Import",
+              "KI-Unterstützung für Titel, Beschreibungen, Kategorien, Tags und Prompt-Varianten",
+              "Live-Preview für HTML, CSS, JavaScript und Markdown"
+            ],
+            "softwareHelp": "Die App wird nach dem Download über einen mitgelieferten Starter geöffnet, läuft lokal auf dem Gerät und wird im Browser angezeigt.",
+            "offers": {
+              "@type": "Offer",
+              "@id": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/#offer",
+              "url": "https://bm1964-25.github.io/Landing-Tafel-Kontakt/",
+              "price": "179.00",
+              "priceCurrency": "EUR",
+              "availability": "https://schema.org/PreOrder",
+              "category": "Jahreslizenz",
+              "description": "Jahreslizenz mit 12 Monaten Laufzeit, automatischer Verlängerung um weitere 12 Monate, Kündigungsfrist 1 Monat vor Ablauf, 3 Tage Testphase sofern aktiviert und persönlichem Nutzerzugriff. Preis zzgl. 19 % MwSt."
+            },
+            "provider": {
+              "@id": "https://www.built-smart-hub.com/#organization"
+            }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/#product",
+            "name": "SMART SnippetFlow",
+            "description": "Lokale Einzelplatz-App zur Verwaltung wiederverwendbarer Prompts, Code-Snippets, Workflows und Notizen.",
+            "brand": {
+              "@type": "Brand",
+              "name": "SmartBuilt-AI"
+            },
+            "offers": {
+              "@id": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/#offer"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://bm1964-25.github.io/Smart-SnippedFlow-Landingpage/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Wie wird die App geöffnet?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Die App wird nach dem Download über den mitgelieferten Starter geöffnet. Sie läuft lokal auf deinem Gerät und wird anschließend im Browser angezeigt."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Werden Daten in der Cloud gespeichert?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nein. Deine Inhalte werden lokal auf deinem Gerät bzw. im lokalen Browser-Speicher gespeichert. Es gibt keine automatische zentrale Cloud-Datenbank und keine automatische Synchronisierung zwischen Nutzern."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Gibt es eine Windows- und macOS-Version?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Die App kann auf Windows und macOS lokal im Browser genutzt werden. Dafür gibt es passende Starter für das jeweilige System."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Wie funktioniert die Lizenz?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Du erhältst eine Jahreslizenz für 12 Monate. Sie verlängert sich automatisch um weitere 12 Monate, sofern sie nicht spätestens 1 Monat vor Ablauf gekündigt wird."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Gibt es eine kostenlose Testphase?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja, sofern dieses Modell aktiviert ist. Die App kann dann für einen begrenzten Zeitraum mit vollem Funktionsumfang getestet werden."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Brauche ich ein Nutzerkonto?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Für Testphase, Kauf und Lizenzprüfung kann ein Nutzerkonto erforderlich sein. Die gespeicherten Inhalte der App bleiben davon getrennt lokal auf deinem Gerät."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Kann ich Daten exportieren?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Du kannst deine Bibliothek als JSON exportieren und später wieder importieren, z. B. zur Sicherung oder zur Übertragung auf ein anderes Gerät."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Welche Inhalte kann ich verwalten?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Du kannst Prompts, Code-Snippets, einfache Workflows, Notizen, Kategorien, Tags und Favoriten strukturiert verwalten."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Gibt es KI-Funktionen?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ja. Die App kann beim Erstellen von Titeln, Beschreibungen, Kategorien, Tags und Prompt-Varianten unterstützen. Für KI-Funktionen wird ein eigener API-Key benötigt."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Warum brauche ich einen Anthropic API-Key?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Die KI-Funktionen laufen über die Anthropic API. Dafür wird ein eigener Anthropic API-Key benötigt. Ein normales Claude-Abo, z. B. Claude Pro, ist dafür nicht ausreichend. Für API-Nutzung können zusätzliche Kosten nach Anthropic-Abrechnung entstehen. Inhalte werden nur für die jeweilige KI-Anfrage an den Anbieter übertragen."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
